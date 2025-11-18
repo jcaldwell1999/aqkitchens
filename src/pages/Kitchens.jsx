@@ -1,14 +1,18 @@
 import { Link } from 'react-router-dom';
+import HeroSection from '../components/HeroSection';
+import homeHeroImg from '../assets/images/HomeHero.jpg';
 
 function Kitchens() {
   return (
     <main>
-      <div className="container">
-        <section className="hero">
-          <h2>Kitchens</h2>
-          <p>Beautiful kitchen designs tailored to your style and needs.</p>
-        </section>
+      {/* Hero at top of page */}
+      <HeroSection
+        imageUrl={homeHeroImg}
+        title="Kitchens"
+        subtitle="Beautiful kitchen designs tailored to your style and needs."
+      />
 
+      <div className="container">
         <section className="content">
           <h3>Your Dream Kitchen Awaits</h3>
           <p>At AQ Kitchens, we design and install stunning kitchens that are both beautiful and practical. Our expert team will guide you through every step of the process, from initial design to final installation.</p>
