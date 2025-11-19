@@ -8,7 +8,7 @@ function Header() {
   };
 
   return (
-    <header>
+    <header className="relative z-30">
       <div className="container">
         <h1>AQ Kitchens</h1>
         <nav>
