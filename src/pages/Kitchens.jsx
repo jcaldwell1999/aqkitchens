@@ -8,8 +8,7 @@ function Kitchens() {
       {/* Hero at top of page */}
       <HeroSection
         imageUrl={homeHeroImg}
-        title="Kitchens"
-        subtitle="Beautiful kitchen designs tailored to your style and needs."
+        subtitle="Explore our kitchen range, available fully fitted or as supply."
       />
 
       <div className="container">
