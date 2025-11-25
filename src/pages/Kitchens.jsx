@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import HeroSection from '../components/HeroSection';
 import homeHeroImg from '../assets/images/HomeHero.jpg';
+import shakerImg from '../assets/images/ShakerButton.jpg';
+import modernImg from '../assets/images/ModernButton.jpg';
 
 function Kitchens() {
   return (
@@ -13,18 +15,25 @@ function Kitchens() {
 
       <div className="container">
         <section className="content">
-          <h3>Your Dream Kitchen Awaits</h3>
-          <p>At AQ Kitchens, we design and install stunning kitchens that are both beautiful and practical. Our expert team will guide you through every step of the process, from initial design to final installation.</p>
-          <p>Explore our kitchen styles to find the perfect match for your home:</p>
+          <p className="intro-paragraph">From sleek modern designs to timeless Shaker styles, our kitchens are crafted to match your taste and lifestyle.</p>
 
           <div className="style-links">
-            <Link to="/shaker-traditional" className="style-card">
-              <h4>Shaker / Traditional</h4>
-              <p>Timeless elegance with classic design elements</p>
+            <Link 
+              to="/shaker-traditional" 
+              className="style-card w-full md:w-1/2 h-64 bg-cover bg-center" 
+              style={{ backgroundImage: `url(${shakerImg})` }} 
+              aria-label="Shaker Traditional kitchens">
+              <h4 className="text-white text-xl font-bold text-center mt-auto mb-4 drop-shadow">
+                SHAKER / TRADITIONAL</h4>
             </Link>
-            <Link to="/modern" className="style-card">
-              <h4>Modern</h4>
-              <p>Sleek, contemporary kitchens for modern living</p>
+            <Link 
+              to="/modern" 
+              className="style-card w-full md:w-1/2 h-64 bg-cover bg-center" 
+              style={{ backgroundImage: `url(${modernImg})` }} 
+              aria-label="Modern kitchens">
+              <h4 className="text-white text-xl font-bold text-center mt-auto mb-4 drop-shadow">
+                MODERN
+              </h4>
             </Link>
           </div>
         </section>

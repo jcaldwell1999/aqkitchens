@@ -77,6 +77,16 @@ main {
   padding: 2rem 0;
 }
 
+/* Intro paragraph centered above the cards */
+.intro-paragraph {
+  text-align: center;
+  color: #fff;
+  max-width: 980px;
+  margin: 0 auto 3rem auto;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
 .content h3 {
   font-size: 2rem;
   margin-bottom: 1rem;
@@ -91,32 +101,54 @@ main {
 
 .style-links {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
   margin-top: 2rem;
   flex-wrap: wrap;
+  justify-content: center; /* center the row */
 }
 
 .style-card {
-  flex: 1;
-  min-width: 250px;
-  padding: 2rem;
+  flex: 0 1 320px; /* grow 0, shrink 1, base width 320px */
+  min-width: 280px;
+  height: 220px;
   background: #f8f9fa;
   border-radius: 8px;
   text-align: center;
   text-decoration: none;
-  color: #333;
+  color: #fff;
   transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  background-size: cover;
+  background-position: center;
 }
 
 .style-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(2,6,23,0.45);
 }
 
 .style-card h4 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #2c3e50;
+  margin: 0;
+  color: #fff;
+  z-index: 12;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+/* subtle dark overlay to improve text contrast */
+.style-card::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.35) 60%);
+  z-index: 10;
 }
 
 footer {
