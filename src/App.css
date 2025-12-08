@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+:root {
+  --spacing: 0.25rem; /* or whatever base unit you want */
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -82,7 +87,8 @@ main {
   text-align: center;
   color: #fff;
   max-width: 980px;
-  margin: 0 auto 3rem auto;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 1.05rem;
   line-height: 1.8;
 }
@@ -93,7 +99,7 @@ main {
   color: #2c3e50;
 }
 
-.content p {
+.content p:not(.intro-paragraph) {
   font-size: 1.1rem;
   margin-bottom: 1rem;
   line-height: 1.8;
@@ -101,7 +107,7 @@ main {
 
 .style-links {
   display: flex;
-  gap: 3rem;
+  /* gap: 3rem; */
   margin-top: 2rem;
   flex-wrap: wrap;
   justify-content: center; /* center the row */
@@ -173,3 +179,229 @@ footer {
     flex-direction: column;
   }
 }
+
+/* --- Transparent site navbar styles --- */
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  color: white;
+  /* remove default header shadow if present */
+  box-shadow: none;
+}
+
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center the group (logo + nav links) horizontally */
+  padding: 14px 20px;
+  gap: 14px; /* space between logo and nav */
+}
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 6px; /* keep logo close to nav items */
+}
+
+.nav-logo {
+  height: 56px; /* larger and in-line with text */
+  width: auto;
+  display: block;
+}
+
+.nav-list {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+
+.nav-link {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 6px 0;
+  position: relative;
+  /* subtle drop shadow behind text for contrast over imagery */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+  transition: color 180ms ease, text-shadow 180ms ease, transform 150ms ease;
+  -webkit-tap-highlight-color: transparent; /* remove blue highlight on mobile/tap */
+}
+
+
+.nav-link:hover {
+  transform: translateY(-1px);
+}
+
+/* active page styling: warm gold color + stronger back shadow */
+
+.nav-link.active {
+  color: #A08D6A;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.65);
+}
+
+/* remove the blue selection/hover background while keeping an accessible focus style */
+.nav-link::selection {
+  background: transparent;
+  color: inherit;
+}
+
+.nav-link:focus {
+  outline: 2px solid rgba(160,141,106,0.18); /* subtle gold focus instead of browser blue */
+  outline-offset: 3px;
+}
+
+.logo-link, .nav-link { -webkit-user-select: text; user-select: text; }
+
+/* Override older generic `nav a` hover/active backgrounds for header-only links.
+   Without this, the earlier rule `nav a:hover, nav a.active { background-color: #34495e; }`
+   will show a dark/blue box behind header links. These overrides ensure the header
+   links remain text-only (transparent background) while keeping focus styles. */
+.site-header .nav-link,
+.site-header .nav-link:hover,
+.site-header .nav-link:active,
+.site-header .nav-link.active {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+  .nav-inner { padding: 10px 16px; }
+  .nav-list { gap: 14px; }
+  .nav-logo { height: 36px; }
+}
+
+/* Contact page styles */
+.contact-hero {
+  background: rgba(0,0,0,0.25);
+  color: #ffffff;
+  text-align: center;
+  padding: 48px 20px;
+  margin: 60px 0 12px 0;
+  border-radius: 6px;
+}
+
+.contact-hero h2 { font-size: 36px; margin-bottom: 8px; }
+.contact-lead { max-width: 860px; margin: 0 auto 18px; color: #dfe6e8; line-height: 1.8; }
+.hero-actions { margin-top: 12px; }
+.btn-brochure {
+  display: inline-block;
+  background: #A08D6A;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.contact-section { padding: 24px 0 48px; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.contact-left { color: #dfe6e8; }
+.contact-info { display: grid; gap: 18px; }
+.contact-info-item { display: flex; gap: 12px; align-items: start; }
+.contact-info-item h4 { color: #A08D6A; margin: 0 0 6px 0; font-size: 1rem; }
+.contact-info-item address, .contact-info-item p { margin: 0; color: #e6e6e6; font-size: 0.95rem; }
+.contact-info-item .icon { color: #A08D6A; min-width: 36px; }
+.contact-info-item.socials .social-icons { color: #e6e6e6; }
+
+.contact-right { background: transparent; }
+.contact-form { display: block; }
+.contact-form .form-row { display: flex; gap: 12px; margin-bottom: 12px; }
+.contact-form input, .contact-form textarea {
+  flex: 1 1 auto;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(160,141,106,0.25);
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: #fff;
+}
+.contact-form textarea { resize: vertical; }
+.btn-send {
+  background: #A08D6A;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.contact-map { margin-top: 26px; }
+.contact-map iframe {
+  width: 100%;
+  height: 360px;
+  border-radius: 12px;
+  border: 6px solid rgba(255,255,255,0.08);
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-form .form-row { flex-direction: column; }
+  .contact-hero { padding: 28px 12px; }
+}
+
+/* --- Our Work gallery (masonry style using CSS columns) --- */
+.our-work-container {
+  background: #2f3a3f; /* dark framed background like screenshot */
+  padding: 36px 0 72px;
+}
+.our-work-inner { padding: 24px 20px; }
+.our-work-hero { text-align: center; margin-bottom: 18px; color: #dfe6e8; }
+.our-work-hero h2 { font-size: 40px; margin: 0 0 8px; color: #e9ecee; }
+.our-work-hero p { color: #bfc8ca; margin: 0; }
+
+.gallery {
+  column-count: 3;
+  column-gap: 22px;
+  max-width: 1180px;
+  margin: 8px auto 0;
+}
+
+.gallery-item {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  margin-bottom: 22px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform .24s ease, box-shadow .24s ease;
+  position: relative;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.18);
+  display: block;
+}
+
+.gallery-item img { display: block; width: 100%; height: auto; }
+
+.gallery-item:hover,
+.gallery-item:focus-within { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(2,6,23,0.28); }
+
+.gallery-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 8px;
+  padding: 8px 12px;
+  color: #fff;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
+  opacity: 0; transform: translateY(6px);
+  transition: opacity .22s ease, transform .22s ease;
+  font-size: 0.95rem; pointer-events: none;
+}
+.gallery-item:hover .gallery-caption, .gallery-item:focus-within .gallery-caption { opacity: 1; transform: translateY(0); }
+
+.gallery .tall img { height: 320px; object-fit: cover; }
+
+@media (max-width: 1100px) { .gallery { column-count: 2; } }
+@media (max-width: 700px)  { .gallery { column-count: 1; } .our-work-hero h2 { font-size: 32px; } }
+
+

@@ -15,20 +15,24 @@ function Kitchens() {
 
       <div className="container">
         <section className="content">
-          <p className="intro-paragraph">From sleek modern designs to timeless Shaker styles, our kitchens are crafted to match your taste and lifestyle.</p>
+          <p className="intro-paragraph mb-16 mt-16">
+            From sleek modern designs to timeless Shaker styles, our kitchens are crafted to match your taste and lifestyle.
+          </p>
 
-          <div className="style-links">
+          <div className="style-links flex flex-col md:flex-row justify-center items-start gap-36">
             <Link 
               to="/shaker-traditional" 
-              className="style-card w-full md:w-1/2 h-64 bg-cover bg-center" 
+              className="style-card w-full md:w-[48%] h-64 bg-cover bg-center" 
               style={{ backgroundImage: `url(${shakerImg})` }} 
               aria-label="Shaker Traditional kitchens">
-              <h4 className="text-white text-xl font-bold text-center mt-auto mb-4 drop-shadow">
-                SHAKER / TRADITIONAL</h4>
+              <h4 
+                className="text-white text-xl font-bold text-center mt-auto mb-4 drop-shadow">
+                SHAKER / TRADITIONAL
+              </h4>
             </Link>
             <Link 
               to="/modern" 
-              className="style-card w-full md:w-1/2 h-64 bg-cover bg-center" 
+              className="style-card w-full md:w-[48%] h-64 bg-cover bg-center" 
               style={{ backgroundImage: `url(${modernImg})` }} 
               aria-label="Modern kitchens">
               <h4 className="text-white text-xl font-bold text-center mt-auto mb-4 drop-shadow">
