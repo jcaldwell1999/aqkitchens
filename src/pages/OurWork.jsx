@@ -1,24 +1,20 @@
-import img1 from '../assets/images/HomeHero.jpg';
-import img2 from '../assets/images/ModernButton.jpg';
-import img3 from '../assets/images/ShakerButton.jpg';
-import img4 from '../assets/images/Logo.png';
-import img5 from '../assets/images/LogoT.png';
+import Gallery from '../components/Gallery';
+
+// Auto-import images from the `src/assets/our-work/` folder.
+// Drop images into that folder and they'll be included automatically.
+const modules = import.meta.glob('../assets/our-work/*.{jpg,jpeg,png}', { eager: true, as: 'url' });
+
+// Turn the modules object into a sorted array of { src, title }
+const images = Object.entries(modules)
+  .sort((a, b) => a[0].localeCompare(b[0]))
+  .map(([path, url], index) => ({
+    src: url,
+    title: path.split('/').pop(),
+    // make every 7th image a taller card for variety (adjust as needed)
+    tall: index % 7 === 0,
+  }));
 
 function OurWork() {
-  // Build an image array. In a real site you'd add your project images here
-  const images = [
-    { src: img1, title: 'Project 1' },
-    { src: img2, title: 'Project 2' },
-    { src: img3, title: 'Project 3' },
-    { src: img4, title: 'Project 4' },
-    { src: img5, title: 'Project 5' },
-    { src: img1, title: 'Project 6' },
-    { src: img2, title: 'Project 7' },
-    { src: img3, title: 'Project 8' },
-    { src: img4, title: 'Project 9' },
-    { src: img5, title: 'Project 10' }
-  ];
-
   return (
     <main>
       <div className="our-work-container">
@@ -28,14 +24,7 @@ function OurWork() {
             <p>Selected projects — kitchens, cabinets & utility rooms.</p>
           </header>
 
-          <div className="gallery" aria-live="polite">
-            {images.map((img, i) => (
-              <a key={i} href={img.src} className={`gallery-item ${i % 5 === 0 ? 'tall' : ''}`} aria-label={img.title}>
-                <img src={img.src} alt={img.title} loading="lazy" />
-                <div className="gallery-caption">{img.title}</div>
-              </a>
-            ))}
-          </div>
+          <Gallery images={images} initialCount={12} increment={12} />
         </div>
       </div>
     </main>

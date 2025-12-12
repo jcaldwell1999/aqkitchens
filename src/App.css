@@ -350,6 +350,57 @@ footer {
   .contact-grid { grid-template-columns: 1fr; }
   .contact-form .form-row { flex-direction: column; }
   .contact-hero { padding: 28px 12px; }
+
+/* Option B — content fade styles for Utility/Boot Rooms */
+.content-fade {
+  position: relative;
+  padding: 28px 0 40px;
+  /* small soft gradient so the hero feels continuous into the content */
+  background: linear-gradient(180deg, rgba(0,0,0,0.06) 0%, rgba(47,58,63,0.0) 30%);
+}
+
+.fade-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  color: #dce6e8;
+  padding: 18px 20px 30px;
+}
+
+.content-fade h3 { color: #e9ecee; font-size: 30px; margin-bottom:6px; }
+.content-fade p  { color: #c8d0d2; line-height:1.7; max-width:880px; margin: 0 auto 12px; }
+
+.feature-row-slim { display:flex; gap: 28px; justify-content: center; margin-top: 18px; }
+.feature-slim { text-align:center; color:#cbd5d8; }
+.feature-slim img { height:46px; display:block; margin:0 auto 8px; filter: grayscale(20%) brightness(0.95); }
+.feature-slim h4 { color:#A08D6A; margin:0; font-weight:700; font-size:0.95rem; }
+
+@media (max-width:900px) {
+  .feature-row-slim { flex-direction: column; gap:12px; }
+  .content-fade { padding: 20px 0 28px; }
+}
+
+/* Utility page specific overrides */
+.utility-hero .hero-section h1 {
+  font-size: 28px !important;
+  line-height: 1.05 !important;
+}
+.utility-hero .hero-section p {
+  font-size: 14px !important;
+}
+
+.feature-slim img { height: 36px; width: auto; display: block; margin: 0 auto 8px; }
+.feature-row-slim { flex-direction: row; }
+
+/* Stronger override for SVG images that include large intrinsic width/height
+   - ensures icons are visually small regardless of embedded SVG size attributes */
+.content-fade .feature-slim img,
+.utility-hero + .container .content-fade .feature-slim img {
+  height: 36px !important;
+  max-height: 40px !important;
+  width: auto !important;
+  display: inline-block !important;
+}
+
 }
 
 /* --- Our Work gallery (masonry style using CSS columns) --- */
@@ -403,5 +454,19 @@ footer {
 
 @media (max-width: 1100px) { .gallery { column-count: 2; } }
 @media (max-width: 700px)  { .gallery { column-count: 1; } .our-work-hero h2 { font-size: 32px; } }
+
+.gallery-actions .btn-load-more,
+.btn-load-more {
+  background: #A08D6A;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.gallery-actions .btn-load-more:hover { transform: translateY(-3px); }
+
 
 
