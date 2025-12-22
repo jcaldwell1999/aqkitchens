@@ -1,0 +1,24 @@
+/* utility.css
+   Page-specific styles for Utility & Boot Rooms. Keeps hero layout variants
+   and feature row behavior separate from global hero styles.
+*/
+
+/* small defaults for the utility page button sizing (page-local variables) */
+.utility-hero { --utility-btn-padding: 12px 26px; --utility-btn-font-size: 16px; --utility-btn-radius: 2px; }
+
+.utility-hero .hero-section h1 { font-size: 96px; line-height: 1.02; font-weight:800; text-align:left; display:block; max-width:680px; }
+.utility-hero .hero-section p { font-size:30px; color: rgba(255,255,255,0.92); max-width:680px; }
+
+.utility-hero .hero-section .z-30 > div { left:25%; top:60%; transform: translateY(-50%); max-width:680px; padding:0 20px; text-align:left; }
+
+.hero-ctas { display:flex; gap:12px; justify-content:flex-start; align-items:flex-start; margin-top:28px; }
+.btn-primary { background:#28343D; color:#A08D6A; padding:var(--utility-btn-padding); border-radius:var(--utility-btn-radius); text-decoration:none; font-weight:800; display:inline-flex; align-items:center; font-size:var(--utility-btn-font-size); }
+.btn-secondary { display:none; }
+
+/* icon smallness and feature row layout */
+.utility-hero .feature-row-slim { display:flex; gap:22px; justify-content:center; margin-top:18px; }
+.utility-hero .feature-slim { text-align:center; color:#cbd5d8; }
+.utility-hero .feature-slim img { height:36px; display:block; margin:0 auto 8px; }
+.utility-hero .feature-slim h4 { color:#A08D6A; margin:0; font-weight:700; }
+
+@media (max-width:900px) { .utility-hero .hero-section h1 { font-size:34px !important; } .utility-hero .hero-section p { font-size:15px !important; } .hero-ctas { flex-direction:column; gap:10px; } }

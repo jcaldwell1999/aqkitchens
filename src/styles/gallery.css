@@ -1,0 +1,17 @@
+/* gallery.css
+   Styles for the reusable Gallery component (used by Our Work, Shaker, Modern pages)
+*/
+
+.gallery { column-count:3; column-gap:22px; max-width:1180px; margin:8px auto 0; }
+.gallery-item { break-inside: avoid; -webkit-column-break-inside: avoid; margin-bottom:22px; border-radius:10px; overflow:hidden; background:#fff; transition: transform .24s ease, box-shadow .24s ease; position:relative; box-shadow:0 6px 18px rgba(2,6,23,0.18); display:block; }
+.gallery-item img { display:block; width:100%; height:auto; }
+.gallery-item:hover, .gallery-item:focus-within { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(2,6,23,0.28); }
+.gallery-caption { position:absolute; left:0; right:0; bottom:8px; padding:8px 12px; color:#fff; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%); opacity:0; transform: translateY(6px); transition: opacity .22s ease, transform .22s ease; font-size:0.95rem; pointer-events:none; }
+.gallery-item:hover .gallery-caption, .gallery-item:focus-within .gallery-caption { opacity:1; transform:translateY(0); }
+
+.gallery .tall img { height:320px; object-fit:cover; }
+
+.gallery-actions .btn-load-more, .btn-load-more { background:#A08D6A; color:#fff; border:none; padding:10px 18px; border-radius:8px; cursor:pointer; font-weight:700; }
+
+@media (max-width:1100px) { .gallery { column-count:2; } }
+@media (max-width:700px) { .gallery { column-count:1; } }

@@ -1,0 +1,10 @@
+/* content.css
+   Generic page content styles: headings, paragraphs, and intro paragraph block.
+*/
+
+.content { padding: 2rem 0; }
+
+.intro-paragraph { text-align: center; color:#fff; max-width:980px; margin-left:auto; margin-right:auto; font-size:1.05rem; line-height:1.8; }
+
+.content h3 { font-size: 2rem; margin-bottom:1rem; color:#2c3e50; }
+.content p:not(.intro-paragraph) { font-size:1.1rem; margin-bottom:1rem; line-height:1.8; }

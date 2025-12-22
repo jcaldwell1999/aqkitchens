@@ -1,0 +1,26 @@
+/* header.css
+   Header & navigation styles. Centered nav, logo sizing, active link styles.
+*/
+
+header { background-color: #2c3e50; color: white; padding: 1rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+/* Site header that overlays the top of the page (fixed) */
+.site-header { position: fixed; top: 0; left: 0; right: 0; background: transparent; color: white; box-shadow: none; z-index: 60; }
+
+.nav-inner { display:flex; align-items:center; justify-content:center; padding:14px 20px; gap:14px; }
+.logo-link { display:inline-flex; align-items:center; margin-right:6px; }
+.nav-logo { height:56px; width:auto; display:block; }
+
+.nav-list { display:flex; gap:22px; align-items:center; }
+.nav-link { color:#ffffff; font-weight:700; text-decoration:none; font-size:1rem; padding:6px 0; position:relative; text-shadow:0 1px 2px rgba(0,0,0,0.6); transition: color 180ms ease, text-shadow 180ms ease, transform 150ms ease; }
+.nav-link:hover { transform: translateY(-1px); }
+.nav-link.active { color: #A08D6A; text-shadow:0 3px 8px rgba(0,0,0,0.65); }
+
+/* keep header links transparent (don't show the old hover box) */
+.site-header .nav-link, .site-header .nav-link:hover, .site-header .nav-link:active, .site-header .nav-link.active { background: transparent !important; box-shadow: none !important; }
+
+@media (max-width: 768px) {
+  .nav-inner { padding: 10px 16px; }
+  .nav-list { gap: 14px; }
+  .nav-logo { height: 36px; }
+}

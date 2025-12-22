@@ -1,0 +1,14 @@
+/* hero.css
+   HeroSection default styles and global hero tweaks. Also includes the global
+   pull-up so hero sits flush under the fixed header.
+*/
+
+.hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem 2rem; border-radius: 8px; margin-bottom: 2rem; text-align: center; }
+.hero h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+.hero p { font-size: 1.2rem; }
+
+/* Keep hero flush to the top under the fixed header. Mobile exceptions below. */
+.hero-section { margin-top: -2rem !important; }
+@media (max-width: 600px) { .hero-section { margin-top: 0 !important; } }
+
+/* Utility page specific hero overrides are in utility.css */

@@ -10,6 +10,7 @@ function Home() {
       <HeroSection
         imageUrl={homeHeroImg}
         subtitle="Explore our kitchen range, available fully fitted or as supply."
+        height={"h-[100vh]"}
       />
       <div className="container">
         <section className="hero">

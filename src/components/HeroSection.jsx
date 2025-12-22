@@ -50,7 +50,9 @@ const HeroSection = ({ imageUrl, logoUrl = logoImg, title, subtitle, buttons, he
             )}
 
             {buttons && (
-              <div className="flex justify-center gap-4">
+              /* Keep buttons centered on small screens but left-align with the
+                 left edge of the text block on medium and larger screens. */
+              <div className="flex justify-center md:justify-start gap-4 w-full">
                 {buttons}
               </div>
             )}

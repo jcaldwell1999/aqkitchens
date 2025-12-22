@@ -1,0 +1,13 @@
+/* misc.css
+   Miscellaneous rules and small overrides that don't belong in other files.
+   Add comments here when adding small helpers.
+*/
+
+/* quick helpers for button size testing */
+.btn-utility--small { --utility-btn-padding: 8px 16px; --utility-btn-font-size: 14px; }
+.btn-utility--large { --utility-btn-padding: 16px 34px; --utility-btn-font-size: 18px; }
+
+/* small global tweak for style cards on mobile */
+@media (max-width: 768px) {
+  .style-card { height: auto; }
+}

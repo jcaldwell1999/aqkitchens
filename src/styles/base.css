@@ -1,0 +1,42 @@
+/* base.css
+   Basic reset and global layout styles.
+   Purpose: set up fonts, background, container and site-wide defaults.
+*/
+
+:root {
+  --spacing: 0.25rem;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #28343D; /* dark framed background used across site */
+}
+
+/* Simple centered container used throughout the site */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Main area defaults */
+main {
+  min-height: calc(100vh - 200px);
+  padding: 2rem 0;
+}
+
+/* Small utility helpers used in many components */
+.center { text-align: center; }
+
+/* Footer baseline styles */
+footer {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}

@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+/* Split styles: import organized partials (keeps one top-level import in App.jsx) */
+@import "./styles/base.css";
+@import "./styles/header.css";
+@import "./styles/hero.css";
+@import "./styles/content.css";
+@import "./styles/cards.css";
+@import "./styles/contact.css";
+@import "./styles/our-work.css";
+@import "./styles/utility.css";
+@import "./styles/gallery.css";
+@import "./styles/misc.css";
+
+
 :root {
   --spacing: 0.25rem; /* or whatever base unit you want */
 }
@@ -15,200 +28,20 @@ body {
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: #333;
-  background-color: #28343D; /* Changed to match your hero gradient fade */
-}
+  @import "tailwindcss";
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-header {
-  background-color: #2c3e50;
-  color: white;
-  padding: 1rem 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-header h1 {
-  margin-bottom: 1rem;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-nav a:hover,
-nav a.active {
-  background-color: #34495e;
-}
-
-main {
-  min-height: calc(100vh - 200px);
-  padding: 2rem 0;
-}
-
-.hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 3rem 2rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.hero h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-size: 1.2rem;
-}
-
-.content {
-  padding: 2rem 0;
-}
-
-/* Intro paragraph centered above the cards */
-.intro-paragraph {
-  text-align: center;
-  color: #fff;
-  max-width: 980px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 1.05rem;
-  line-height: 1.8;
-}
-
-.content h3 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #2c3e50;
-}
-
-.content p:not(.intro-paragraph) {
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  line-height: 1.8;
-}
-
-.style-links {
-  display: flex;
-  /* gap: 3rem; */
-  margin-top: 2rem;
-  flex-wrap: wrap;
-  justify-content: center; /* center the row */
-}
-
-.style-card {
-  flex: 0 1 320px; /* grow 0, shrink 1, base width 320px */
-  min-width: 280px;
-  height: 220px;
-  background: #f8f9fa;
-  border-radius: 8px;
-  text-align: center;
-  text-decoration: none;
-  color: #fff;
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
-  overflow: hidden;
-  display: block;
-  background-size: cover;
-  background-position: center;
-}
-
-.style-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(2,6,23,0.45);
-}
-
-.style-card h4 {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.5rem;
-  margin: 0;
-  color: #fff;
-  z-index: 12;
-  letter-spacing: 1px;
-  font-weight: 700;
-}
-
-/* subtle dark overlay to improve text contrast */
-.style-card::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; top: 0; bottom: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.35) 60%);
-  z-index: 10;
-}
-
-footer {
-  background-color: #2c3e50;
-  color: white;
-  text-align: center;
-  padding: 2rem 0;
-  margin-top: 3rem;
-}
-
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .hero h2 {
-    font-size: 1.8rem;
-  }
-  
-  .style-links {
-    flex-direction: column;
-  }
-}
-
-/* --- Transparent site navbar styles --- */
-.site-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: transparent;
-  color: white;
-  /* remove default header shadow if present */
-  box-shadow: none;
-}
-
-
-.nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* center the group (logo + nav links) horizontally */
-  padding: 14px 20px;
-  gap: 14px; /* space between logo and nav */
-}
-
-.logo-link {
-  display: inline-flex;
-  align-items: center;
-  margin-right: 6px; /* keep logo close to nav items */
-}
-
-.nav-logo {
-  height: 56px; /* larger and in-line with text */
+  /* Top-level imports: smaller organized files live in src/styles/ for clarity
+     Each partial has a brief header comment explaining its purpose. */
+  @import "./styles/base.css";
+  @import "./styles/header.css";
+  @import "./styles/hero.css";
+  @import "./styles/content.css";
+  @import "./styles/cards.css";
+  @import "./styles/contact.css";
+  @import "./styles/our-work.css";
+  @import "./styles/utility.css";
+  @import "./styles/gallery.css";
+  @import "./styles/misc.css";
   width: auto;
   display: block;
 }
@@ -275,6 +108,18 @@ footer {
   .nav-list { gap: 14px; }
   .nav-logo { height: 36px; }
 }
+
+/* Remove the top gap for all pages that use the hero component
+   This pulls the hero up so it sits directly under the fixed header */
+.hero-section {
+  margin-top: -2rem !important;
+}
+
+/* On narrow screens we don't pull things up so much (avoid header overlap) */
+@media (max-width: 600px) {
+  .hero-section { margin-top: 0 !important; }
+}
+
 
 /* Contact page styles */
 .contact-hero {
@@ -467,6 +312,147 @@ footer {
 }
 
 .gallery-actions .btn-load-more:hover { transform: translateY(-3px); }
+
+
+/* Strong page-specific fixes for Utility page layout */
+/* Ensure the slim feature row is a horizontal flex row on desktop */
+.utility-hero .fade-inner .feature-row-slim,
+.content-fade .feature-row-slim {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 22px !important;
+}
+
+.utility-hero .fade-inner .feature-slim {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  width: auto !important;
+}
+
+/* Reduce hero title size specifically on Utility page */
+.utility-hero .hero-section h1 {
+  font-size: 28px !important;
+  line-height: 1.05 !important;
+  margin: 0 !important;
+}
+
+/* ensure icons are small and inline */
+.utility-hero .feature-icon,
+.utility-hero .feature-slim img {
+  height: 36px !important;
+  max-height: 40px !important;
+  width: auto !important;
+  display: inline-block !important;
+}
+
+/* center icon above label and ensure vertical stack inside each feature */
+.utility-hero .feature-row-slim { justify-content: center !important; }
+.utility-hero .feature-slim { display: flex !important; flex-direction: column !important; align-items: center !important; text-align: center !important; }
+.utility-hero .feature-slim h4 { margin-top: 6px !important; }
+
+/* make site logo larger */
+.nav-logo { height: 80px !important; }
+
+/* larger hero logo and ensure it's centered */
+.utility-hero .hero-logo {
+  width: 420px !important;
+  max-width: 60% !important;
+  transform: none !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+}
+
+/* move hero content higher on the Utility page */
+.utility-hero .hero-section .z-30 > div {
+  top: 10% !important;
+  transform: translateX(-50%) translateY(0) !important;
+}
+
+/* reduce hero title further (if still large) */
+.utility-hero .hero-section h1 { font-size: 22px !important; }
+
+/* New hero style for Utility page to match the second screenshot: no logo, large centered title, two CTAs */
+.utility-hero .hero-section h1 {
+  font-size: 96px !important;
+  line-height: 1.02 !important;
+  font-weight: 800 !important;
+  text-align: left !important; /* left-align as requested */
+  margin: 0 0 12px 0 !important;
+  display: block;
+  max-width: 680px;
+}
+.utility-hero .hero-section p {
+  font-size: 30px !important;
+  text-align: left !important;
+  margin-bottom: 18px !important;
+  color: rgba(255,255,255,0.92) !important;
+  max-width: 680px;
+}
+/* place hero content vertically centered and aligned to the left */
+.utility-hero .hero-section .z-30 > div {
+  left: 25% !important;
+  top: 60% !important;
+  transform: translateY(-50%) !important;
+  max-width: 680px !important;
+  padding: 0 20px !important;
+  text-align: left !important;
+}
+
+/* mobile: switch to centered block for narrow screens so content doesn't feel cramped */
+@media (max-width: 600px) {
+  .utility-hero .hero-section .z-30 > div {
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    padding: 0 12px !important;
+  }
+  .utility-hero .hero-section h1 { font-size: 28px !important; text-align:center !important; }
+  .utility-hero .hero-section p { text-align:center !important; }
+  .hero-ctas { justify-content:center !important; flex-direction:column; align-items:center; }
+}
+
+.hero-ctas { display: flex; gap: 12px; justify-content: flex-start; align-items: flex-start; margin-top: 28px; margin-left:0; width:auto; }
+
+/* per-page variables so you can quickly test sizes */
+.utility-hero {
+  --utility-btn-padding: 12px 26px;
+  --utility-btn-font-size: 16px;
+  --utility-btn-radius: 2px;
+}
+
+.btn-primary {
+  background: #28343D; /* new utility button background */
+  color: #A08D6A; /* utility gold text */
+  padding: var(--utility-btn-padding);
+  border-radius: var(--utility-btn-radius); /* small corner radius */
+  text-decoration: none;
+  font-weight: 800; /* Inter bold */
+  box-shadow: none;
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--utility-btn-font-size);
+}
+.btn-primary:hover { filter: brightness(.98); }
+.btn-utility { background: #28343D; color: #A08D6A; border-radius: 2px; }
+.btn-secondary { display: none; }
+
+/* Ensure hero title, subtitle and CTA line up perfectly on the left */
+.utility-hero .hero-section h1,
+.utility-hero .hero-section p,
+.utility-hero .hero-section .hero-ctas { margin-left: 0 !important; padding-left: 0 !important; }
+
+/* quick helper classes to test size variations without changing variables */
+.btn-utility--small { --utility-btn-padding: 8px 16px; --utility-btn-font-size: 14px; }
+.btn-utility--large { --utility-btn-padding: 16px 34px; --utility-btn-font-size: 18px; }
+
+@media (max-width: 900px) {
+  .utility-hero .hero-section h1 { font-size: 34px !important; }
+  .utility-hero .hero-section p { font-size: 15px !important; }
+  .hero-ctas { flex-direction: column; gap: 10px; }
+}
 
 
 
