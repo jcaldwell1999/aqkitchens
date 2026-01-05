@@ -2,17 +2,25 @@
    Header & navigation styles. Centered nav, logo sizing, active link styles.
 */
 
-header { background-color: #2c3e50; color: white; padding: 1rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+header { background-color: #2c3e50; color: white; padding: 1rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
 
 /* Site header that overlays the top of the page (fixed) */
-.site-header { position: fixed; top: 0; left: 0; right: 0; background: transparent; color: white; box-shadow: none; z-index: 60; }
+.site-header { position: fixed; top: 0; left: 0; right: 0; background: transparent; color: white; box-shadow: none; z-index: 60; transition: background-color 220ms ease, box-shadow 220ms ease, backdrop-filter 220ms ease; }
 
-.nav-inner { display:flex; align-items:center; justify-content:center; padding:14px 20px; gap:14px; }
+/* When scrolled, make the header match the page background and add subtle shadow */
+.site-header.scrolled {
+  background-color: #28343D;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+}
+
+/* Header inner spacing — reduced so nav sits closer to top */
+.nav-inner { display:flex; align-items:center; justify-content:center; padding:4px 8px; gap:10px; height:44px; }
 .logo-link { display:inline-flex; align-items:center; margin-right:6px; }
-.nav-logo { height:56px; width:auto; display:block; }
+.nav-logo { height:36px; width:auto; display:block; }
 
-.nav-list { display:flex; gap:22px; align-items:center; }
-.nav-link { color:#ffffff; font-weight:700; text-decoration:none; font-size:1rem; padding:6px 0; position:relative; text-shadow:0 1px 2px rgba(0,0,0,0.6); transition: color 180ms ease, text-shadow 180ms ease, transform 150ms ease; }
+.nav-list { display:flex; gap:18px; align-items:center; }
+.nav-link { color:#ffffff; font-weight:700; text-decoration:none; font-size:0.95rem; padding:4px 0; position:relative; text-shadow:0 1px 1px rgba(0,0,0,0.5); transition: color 160ms ease, text-shadow 160ms ease, transform 140ms ease; }
 .nav-link:hover { transform: translateY(-1px); }
 .nav-link.active { color: #A08D6A; text-shadow:0 3px 8px rgba(0,0,0,0.65); }
 
@@ -20,7 +28,7 @@ header { background-color: #2c3e50; color: white; padding: 1rem 0; box-shadow: 0
 .site-header .nav-link, .site-header .nav-link:hover, .site-header .nav-link:active, .site-header .nav-link.active { background: transparent !important; box-shadow: none !important; }
 
 @media (max-width: 768px) {
-  .nav-inner { padding: 10px 16px; }
-  .nav-list { gap: 14px; }
-  .nav-logo { height: 36px; }
+  .nav-inner { padding: 4px 8px; }
+  .nav-list { gap: 10px; }
+  .nav-logo { height: 28px; }
 }

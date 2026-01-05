@@ -33,18 +33,21 @@ function UtilityBootRooms() {
 
             <div className="feature-row-slim">
               <div className="feature-slim">
-                <img src={iconWardrobe} alt="Tall storage" className="feature-icon" style={{ height: 132, width: 'auto' }} />
+                <img src={iconWardrobe} alt="Tall storage" className="feature-icon" />
                 <h4>Tall Storage</h4>
+                <p className="feature-desc">Make the most of vertical space with custom tall cupboards.</p>
               </div>
 
               <div className="feature-slim">
-                <img src={iconWasher} alt="Integrated appliances" className="feature-icon" style={{ height: 132, width: 'auto' }} />
+                <img src={iconWasher} alt="Integrated appliances" className="feature-icon" />
                 <h4>Integrated Appliances</h4>
+                <p className="feature-desc">Neatly stack and conceal appliances for a streamlined look.</p>
               </div>
 
               <div className="feature-slim">
-                <img src={iconChisel} alt="Space efficient" className="feature-icon" style={{ height: 132, width: 'auto' }} />
+                <img src={iconChisel} alt="Space efficient" className="feature-icon" />
                 <h4>Space Efficient</h4>
+                <p className="feature-desc">Smart layouts that maximise storage while saving floor space.</p>
               </div>
             </div>
           </div>

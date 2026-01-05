@@ -1,15 +1,24 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import logo from '../assets/images/LogoT.png';
 
 function Header() {
   const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
+  
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
   
   const isActive = (path) => {
     return location.pathname === path ? 'active' : '';
   };
 
   return (
-    <header className="site-header z-50">
+    <header className={`site-header z-50 ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-inner container">
         <Link to="/" className="logo-link" aria-label="AQ Kitchens">
           <img src={logo} alt="AQ Kitchens logo" className="nav-logo" />
