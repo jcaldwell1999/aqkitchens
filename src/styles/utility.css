@@ -28,8 +28,8 @@
 .utility-hero .fade-inner .feature-slim .feature-icon,
 .content-fade .feature-slim img,
 .utility-hero + .container .content-fade .feature-slim img {
-  height: 40px !important;
-  max-height: 40px !important;
+  height: 180px !important;
+  max-height: 180px !important;
   width: auto !important;
   display: inline-block !important;
 }
