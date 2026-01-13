@@ -28,13 +28,13 @@ function UtilityBootRooms() {
       <div className="container">
         <section className="content content-fade mt-32 mb-20"> {/* increased top margin for more space from hero */}
           <div className="fade-inner container max-w-4xl mx-auto text-center">
-            <p className="text-gray-300 mb-32 text-base leading-relaxed"> {/* matched bottom margin to match top spacing */}
+            <p className="text-gray-300 mb-0 utility-paragraph text-base leading-relaxed"> {/* matched bottom margin to match top spacing */}
               Whether you're extending your kitchen renovation or starting a new project, our utility and boot rooms are tailored to suit your space, lifestyle, and budget.
               A well-designed utility room frees up valuable space elsewhere in the home — especially the kitchen. Tall storage units can neatly hide mops, brushes, and ironing boards, while stacked washing machines and dryers help maximise your floor space.
               Functional and practical can also be beautiful and affordable. Whether you're after a casual chat about your ideas or full design expertise, AQ Kitchens is here to help — every step of the way.
             </p>
 
-            <div className="feature-row-slim flex flex-col md:flex-row justify-center items-start gap-16">
+            <div className="feature-row-slim mt-32 flex flex-col md:flex-row justify-center items-start gap-16">
               {/* Card 1 */}
               <div className="feature-slim text-center transition-all duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.25)]">
                 <img
