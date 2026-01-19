@@ -1,0 +1,196 @@
+/* About Page Styles */
+
+.about-page {
+  background-color: #28343D;
+  min-height: 100vh;
+  padding: 0;
+}
+
+/* Hero Section with Logo and Content Box */
+.about-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 20px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo Container */
+.logo-container {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.aq-logo {
+  width: 280px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.slogan {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 300;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Main Content Box (outlined) */
+.content-box {
+  background-color: #F5F5F0;
+  padding: 48px 56px;
+  max-width: 900px;
+  width: 100%;
+  margin: 40px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border: 2px solid #A08D6A;
+  border-radius: 4px;
+  box-sizing: border-box;
+} 
+
+.intro-text {
+  color: #28343D;
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.intro-text:last-child {
+  margin-bottom: 0;
+}
+
+/* Checkerboard Grid Section */
+.about-grid {
+  background-color: #28343D;
+  padding: 60px 20px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+  align-items: center;
+}
+
+.grid-row:last-child {
+  margin-bottom: 0;
+}
+
+/* Grid Text Blocks */
+.grid-text {
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-text p {
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 450px;
+}
+
+/* Grid Images */
+.grid-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.grid-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.grid-image img:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .about-hero {
+    padding: 60px 20px 40px;
+  }
+
+  .aq-logo {
+    width: 200px;
+  }
+
+  .slogan {
+    font-size: 18px;
+  }
+
+  .content-box {
+    padding: 40px 30px;
+    margin: 30px 0;
+  }
+
+  .intro-text {
+    font-size: 16px;
+  }
+
+  .grid-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .grid-text {
+    padding: 20px;
+  }
+
+  .grid-text p {
+    font-size: 16px;
+  }
+
+  .grid-image img {
+    height: 300px;
+  }
+
+  /* Stack in proper order on mobile */
+  .grid-image.left {
+    order: 1;
+  }
+  
+  .grid-text.right {
+    order: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .aq-logo {
+    width: 160px;
+  }
+
+  .slogan {
+    font-size: 16px;
+  }
+
+  .content-box {
+    padding: 30px 20px;
+  }
+
+  .intro-text {
+    font-size: 15px;
+  }
+
+  .grid-text p {
+    font-size: 15px;
+  }
+
+  .grid-image img {
+    height: 250px;
+  }
+}

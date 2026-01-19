@@ -37,8 +37,8 @@ function UtilityBootRooms() {
       </div>
 
       {/* Main content - using padding instead of margin to avoid CSS conflicts */}
-      <div className="w-full flex justify-center" style={{ paddingTop: '80px', paddingBottom: '40px' }}>
-        <div className="max-w-[1200px] w-full px-6 flex flex-col items-center">
+      <div className="w-full flex justify-center bg-[#28343D] py-20">
+        <div className="max-w-[1200px] w-full px-6 !text-center flex flex-col !items-center">
         {/* Intro paragraph */}
         <div className="text-center mb-20 w-full">
           <p className="text-gray-300 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">

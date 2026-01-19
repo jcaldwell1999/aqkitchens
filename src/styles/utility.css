@@ -15,12 +15,41 @@
 .btn-primary { background:#28343D; color:#A08D6A; padding:var(--utility-btn-padding); border-radius:var(--utility-btn-radius); text-decoration:none; font-weight:800; display:inline-flex; align-items:center; font-size:var(--utility-btn-font-size); }
 .btn-secondary { display:none; }
 
-/* Feature cards styling - headings and descriptions */
-.utility-hero .feature-slim h4 { color:#A08D6A; }
-.utility-hero .feature-slim .feature-desc { color:#87AAB9; }
+/* icon smallness and feature row layout */
+/* Evenly space features across the available width and centre labels/descriptions */
+.utility-hero .feature-row-slim { display:flex; gap:22px; justify-content: space-between !important; align-items: flex-start; width:100%; margin-top:18px; }
+.utility-hero .feature-slim { text-align:center; color:#cbd5d8; flex: 1 1 0; max-width:360px; padding:0 12px; display:flex; flex-direction:column; align-items:center; }
+.utility-hero .feature-slim img, .utility-hero .feature-slim .feature-icon { height:36px !important; display:block; margin:0 auto 8px; }
+.utility-hero .feature-slim h4 { color:#A08D6A; margin:6px 0 4px; font-weight:700; }
+.utility-hero .feature-slim .feature-desc { margin:0; font-size:0.95rem; color:#cbd5d8; line-height:1.45; }
+
+/* Strong override to ensure icons are smaller on the Utility page and win over site-wide rules */
+.utility-hero .fade-inner .feature-slim img,
+.utility-hero .fade-inner .feature-slim .feature-icon,
+.content-fade .feature-slim img,
+.utility-hero + .container .content-fade .feature-slim img {
+  height: 40px !important;
+  max-height: 40px !important;
+  width: auto !important;
+  display: inline-block !important;
+}
 
 @media (max-width:900px) {
-  .utility-hero .hero-section h1 { font-size:34px !important; }
-  .utility-hero .hero-section p { font-size:15px !important; }
-  .hero-ctas { flex-direction:column; gap:10px; }
+  .utility-hero .fade-inner .feature-slim img,
+  .utility-hero .fade-inner .feature-slim .feature-icon,
+  .content-fade .feature-slim img {
+    height: 28px !important;
+    max-height: 28px !important;
+  }
 }
+
+/* ensure stronger selector for existing site-wide overrides (keeps spacing working) */
+.utility-hero .fade-inner .feature-row-slim { justify-content: space-between !important; }
+.utility-hero .fade-inner .feature-slim { align-items: center !important; }
+
+@media (max-width:900px) {
+  .utility-hero .feature-row-slim { flex-direction: column; gap:12px; align-items: center; }
+  .utility-hero .feature-slim { max-width: none; padding: 0; }
+}
+
+@media (max-width:900px) { .utility-hero .hero-section h1 { font-size:34px !important; } .utility-hero .hero-section p { font-size:15px !important; } .hero-ctas { flex-direction:column; gap:10px; } }

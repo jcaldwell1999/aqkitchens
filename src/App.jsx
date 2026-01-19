@@ -11,6 +11,7 @@ import About from './pages/About';
 import ShakerTraditional from './pages/ShakerTraditional';
 import Modern from './pages/Modern';
 import './App.css';
+import './styles/about.css';
 
 function App() {
   return (
