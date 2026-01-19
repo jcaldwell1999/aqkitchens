@@ -12,11 +12,9 @@
 @import "./styles/gallery.css";
 @import "./styles/misc.css";
 
-
 :root {
-  --spacing: 0.25rem; /* or whatever base unit you want */
+  --spacing: 0.25rem;
 }
-
 
 * {
   margin: 0;
@@ -28,20 +26,6 @@ body {
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: #333;
-  @import "tailwindcss";
-
-  /* Top-level imports: smaller organized files live in src/styles/ for clarity
-     Each partial has a brief header comment explaining its purpose. */
-  @import "./styles/base.css";
-  @import "./styles/header.css";
-  @import "./styles/hero.css";
-  @import "./styles/content.css";
-  @import "./styles/cards.css";
-  @import "./styles/contact.css";
-  @import "./styles/our-work.css";
-  @import "./styles/utility.css";
-  @import "./styles/gallery.css";
-  @import "./styles/misc.css";
   width: auto;
   display: block;
 }
@@ -52,7 +36,6 @@ body {
   align-items: center;
 }
 
-
 .nav-link {
   color: #ffffff;
   font-weight: 700;
@@ -60,41 +43,32 @@ body {
   font-size: 1rem;
   padding: 6px 0;
   position: relative;
-  /* subtle drop shadow behind text for contrast over imagery */
   text-shadow: 0 1px 2px rgba(0,0,0,0.6);
   transition: color 180ms ease, text-shadow 180ms ease, transform 150ms ease;
-  -webkit-tap-highlight-color: transparent; /* remove blue highlight on mobile/tap */
+  -webkit-tap-highlight-color: transparent;
 }
-
 
 .nav-link:hover {
   transform: translateY(-1px);
 }
-
-/* active page styling: warm gold color + stronger back shadow */
 
 .nav-link.active {
   color: #A08D6A;
   text-shadow: 0 3px 8px rgba(0,0,0,0.65);
 }
 
-/* remove the blue selection/hover background while keeping an accessible focus style */
 .nav-link::selection {
   background: transparent;
   color: inherit;
 }
 
 .nav-link:focus {
-  outline: 2px solid rgba(160,141,106,0.18); /* subtle gold focus instead of browser blue */
+  outline: 2px solid rgba(160,141,106,0.18);
   outline-offset: 3px;
 }
 
 .logo-link, .nav-link { -webkit-user-select: text; user-select: text; }
 
-/* Override older generic `nav a` hover/active backgrounds for header-only links.
-   Without this, the earlier rule `nav a:hover, nav a.active { background-color: #34495e; }`
-   will show a dark/blue box behind header links. These overrides ensure the header
-   links remain text-only (transparent background) while keeping focus styles. */
 .site-header .nav-link,
 .site-header .nav-link:hover,
 .site-header .nav-link:active,
@@ -109,17 +83,13 @@ body {
   .nav-logo { height: 36px; }
 }
 
-/* Remove the top gap for all pages that use the hero component
-   This pulls the hero up so it sits directly under the fixed header */
 .hero-section {
   margin-top: -2rem !important;
 }
 
-/* On narrow screens we don't pull things up so much (avoid header overlap) */
 @media (max-width: 600px) {
   .hero-section { margin-top: 0 !important; }
 }
-
 
 /* Contact page styles */
 .contact-hero {
@@ -195,263 +165,6 @@ body {
   .contact-grid { grid-template-columns: 1fr; }
   .contact-form .form-row { flex-direction: column; }
   .contact-hero { padding: 28px 12px; }
-
-/* Option B — content fade styles for Utility/Boot Rooms */
-.content-fade {
-  position: relative;
-  padding: 28px 0 40px;
-  /* small soft gradient so the hero feels continuous into the content */
-  background: linear-gradient(180deg, rgba(0,0,0,0.06) 0%, rgba(47,58,63,0.0) 30%);
-}
-
-.fade-inner {
-  max-width: 1180px;
-  margin: 0 auto;
-  color: #dce6e8;
-  padding: 18px 20px 30px;
-}
-
-.content-fade h3 { color: #e9ecee; font-size: 30px; margin-bottom:6px; }
-.content-fade p  { color: #c8d0d2; line-height:1.7; max-width:880px; margin: 0 auto 12px; }
-
-.feature-row-slim { display:flex; gap: 28px; justify-content: center; margin-top: 18px; }
-.feature-slim { text-align:center; color:#cbd5d8; }
-.feature-slim img { height:46px; display:block; margin:0 auto 8px; filter: grayscale(20%) brightness(0.95); }
-.feature-slim h4 { color:#A08D6A; margin:0; font-weight:700; font-size:0.95rem; }
-
-@media (max-width:900px) {
-  .feature-row-slim { flex-direction: column; gap:12px; }
-  .content-fade { padding: 20px 0 28px; }
-}
-
-/* Utility page specific overrides */
-.utility-hero .hero-section h1 {
-  font-size: 28px !important;
-  line-height: 1.05 !important;
-}
-.utility-hero .hero-section p {
-  font-size: 14px !important;
-}
-
-.feature-slim img { height: 36px; width: auto; display: block; margin: 0 auto 8px; }
-.feature-row-slim { flex-direction: row; }
-
-/* Stronger override for SVG images that include large intrinsic width/height
-   - ensures icons are visually small regardless of embedded SVG size attributes */
-.content-fade .feature-slim img,
-.utility-hero + .container .content-fade .feature-slim img {
-  height: 36px !important;
-  max-height: 40px !important;
-  width: auto !important;
-  display: inline-block !important;
-}
-
-}
-
-/* --- Our Work gallery (masonry style using CSS columns) --- */
-.our-work-container {
-  background: #2f3a3f; /* dark framed background like screenshot */
-  padding: 36px 0 72px;
-}
-.our-work-inner { padding: 24px 20px; }
-.our-work-hero { text-align: center; margin-bottom: 18px; color: #dfe6e8; }
-.our-work-hero h2 { font-size: 40px; margin: 0 0 8px; color: #e9ecee; }
-.our-work-hero p { color: #bfc8ca; margin: 0; }
-
-.gallery {
-  column-count: 3;
-  column-gap: 22px;
-  max-width: 1180px;
-  margin: 8px auto 0;
-}
-
-.gallery-item {
-  break-inside: avoid;
-  -webkit-column-break-inside: avoid;
-  margin-bottom: 22px;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #fff;
-  transition: transform .24s ease, box-shadow .24s ease;
-  position: relative;
-  box-shadow: 0 6px 18px rgba(2,6,23,0.18);
-  display: block;
-}
-
-.gallery-item img { display: block; width: 100%; height: auto; }
-
-.gallery-item:hover,
-.gallery-item:focus-within { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(2,6,23,0.28); }
-
-.gallery-caption {
-  position: absolute;
-  left: 0; right: 0; bottom: 8px;
-  padding: 8px 12px;
-  color: #fff;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
-  opacity: 0; transform: translateY(6px);
-  transition: opacity .22s ease, transform .22s ease;
-  font-size: 0.95rem; pointer-events: none;
-}
-.gallery-item:hover .gallery-caption, .gallery-item:focus-within .gallery-caption { opacity: 1; transform: translateY(0); }
-
-.gallery .tall img { height: 320px; object-fit: cover; }
-
-@media (max-width: 1100px) { .gallery { column-count: 2; } }
-@media (max-width: 700px)  { .gallery { column-count: 1; } .our-work-hero h2 { font-size: 32px; } }
-
-.gallery-actions .btn-load-more,
-.btn-load-more {
-  background: #A08D6A;
-  color: #fff;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 700;
-}
-
-.gallery-actions .btn-load-more:hover { transform: translateY(-3px); }
-
-
-/* Strong page-specific fixes for Utility page layout */
-/* Ensure the slim feature row is a horizontal flex row on desktop */
-.utility-hero .fade-inner .feature-row-slim,
-.content-fade .feature-row-slim {
-  display: flex !important;
-  flex-direction: row !important;
-  justify-content: center !important;
-  align-items: center !important;
-  gap: 22px !important;
-}
-
-.utility-hero .fade-inner .feature-slim {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  width: auto !important;
-}
-
-/* Reduce hero title size specifically on Utility page */
-.utility-hero .hero-section h1 {
-  font-size: 28px !important;
-  line-height: 1.05 !important;
-  margin: 0 !important;
-}
-
-/* ensure icons are small and inline */
-.utility-hero .feature-icon,
-.utility-hero .feature-slim img {
-  height: 36px !important;
-  max-height: 40px !important;
-  width: auto !important;
-  display: inline-block !important;
-}
-
-/* center icon above label and ensure vertical stack inside each feature */
-.utility-hero .feature-row-slim { justify-content: center !important; }
-.utility-hero .feature-slim { display: flex !important; flex-direction: column !important; align-items: center !important; text-align: center !important; }
-.utility-hero .feature-slim h4 { margin-top: 6px !important; }
-
-/* make site logo larger */
-.nav-logo { height: 80px !important; }
-
-/* larger hero logo and ensure it's centered */
-.utility-hero .hero-logo {
-  width: 420px !important;
-  max-width: 60% !important;
-  transform: none !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  display: block !important;
-}
-
-/* move hero content higher on the Utility page */
-.utility-hero .hero-section .z-30 > div {
-  top: 10% !important;
-  transform: translateX(-50%) translateY(0) !important;
-}
-
-/* reduce hero title further (if still large) */
-.utility-hero .hero-section h1 { font-size: 22px !important; }
-
-/* New hero style for Utility page to match the second screenshot: no logo, large centered title, two CTAs */
-.utility-hero .hero-section h1 {
-  font-size: 96px !important;
-  line-height: 1.02 !important;
-  font-weight: 800 !important;
-  text-align: left !important; /* left-align as requested */
-  margin: 0 0 12px 0 !important;
-  display: block;
-  max-width: 680px;
-}
-.utility-hero .hero-section p {
-  font-size: 30px !important;
-  text-align: left !important;
-  margin-bottom: 18px !important;
-  color: rgba(255,255,255,0.92) !important;
-  max-width: 680px;
-}
-/* place hero content vertically centered and aligned to the left */
-.utility-hero .hero-section .z-30 > div {
-  left: 25% !important;
-  top: 60% !important;
-  transform: translateY(-50%) !important;
-  max-width: 680px !important;
-  padding: 0 20px !important;
-  text-align: left !important;
-}
-
-/* mobile: switch to centered block for narrow screens so content doesn't feel cramped */
-@media (max-width: 600px) {
-  .utility-hero .hero-section .z-30 > div {
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    padding: 0 12px !important;
-  }
-  .utility-hero .hero-section h1 { font-size: 28px !important; text-align:center !important; }
-  .utility-hero .hero-section p { text-align:center !important; }
-  .hero-ctas { justify-content:center !important; flex-direction:column; align-items:center; }
-}
-
-.hero-ctas { display: flex; gap: 12px; justify-content: flex-start; align-items: flex-start; margin-top: 28px; margin-left:0; width:auto; }
-
-/* per-page variables so you can quickly test sizes */
-.utility-hero {
-  --utility-btn-padding: 12px 26px;
-  --utility-btn-font-size: 16px;
-  --utility-btn-radius: 2px;
-}
-
-.btn-primary {
-  background: #28343D; /* new utility button background */
-  color: #A08D6A; /* utility gold text */
-  padding: var(--utility-btn-padding);
-  border-radius: var(--utility-btn-radius); /* small corner radius */
-  text-decoration: none;
-  font-weight: 800; /* Inter bold */
-  box-shadow: none;
-  display: inline-flex;
-  align-items: center;
-  font-size: var(--utility-btn-font-size);
-}
-.btn-primary:hover { filter: brightness(.98); }
-.btn-utility { background: #28343D; color: #A08D6A; border-radius: 2px; }
-.btn-secondary { display: none; }
-
-/* Ensure hero title, subtitle and CTA line up perfectly on the left */
-.utility-hero .hero-section h1,
-.utility-hero .hero-section p,
-.utility-hero .hero-section .hero-ctas { margin-left: 0 !important; padding-left: 0 !important; }
-
-/* quick helper classes to test size variations without changing variables */
-.btn-utility--small { --utility-btn-padding: 8px 16px; --utility-btn-font-size: 14px; }
-.btn-utility--large { --utility-btn-padding: 16px 34px; --utility-btn-font-size: 18px; }
-
-@media (max-width: 900px) {
-  .utility-hero .hero-section h1 { font-size: 34px !important; }
-  .utility-hero .hero-section p { font-size: 15px !important; }
-  .hero-ctas { flex-direction: column; gap: 10px; }
 }
 
 
