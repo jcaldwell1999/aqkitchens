@@ -1,20 +1,35 @@
 import { Link } from 'react-router-dom';
+import Gallery from '../components/Gallery';
+
+// Auto-import images from the modern kitchens folder
+const modules = import.meta.glob('../assets/kitchens-modern/*.{jpg,jpeg,png}', { eager: true, as: 'url' });
+
+// Turn the modules object into a sorted array of { src, title }
+const images = Object.entries(modules)
+  .sort((a, b) => a[0].localeCompare(b[0]))
+  .map(([path, url], index) => ({
+    src: url,
+    title: path.split('/').pop(),
+    tall: index % 7 === 0,
+  }));
 
 function Modern() {
   return (
     <main>
-      <div className="container">
-        <section className="hero">
-          <h2>Modern Kitchens</h2>
-          <p>Sleek, contemporary kitchens for modern living.</p>
-        </section>
+      <div className="kitchen-gallery-container">
+        <div className="kitchen-gallery-inner container">
+          <header className="kitchen-gallery-hero">
+            <Link to="/kitchens" className="back-link">← Back to Kitchens</Link>
+            <h2>Modern Kitchens</h2>
+            <p>Sleek, contemporary designs with cutting-edge functionality.</p>
+          </header>
 
-        <section className="content">
-          <h3>Contemporary Design Excellence</h3>
-          <p>Our modern kitchen designs feature sleek lines, minimalist aesthetics, and cutting-edge functionality. With handleless doors, integrated appliances, and innovative storage solutions, these kitchens represent the pinnacle of contemporary design.</p>
-          <p>Whether you prefer high-gloss finishes, matte textures, or natural materials, our modern kitchens are designed to create a striking focal point in your home while maximizing efficiency and usability.</p>
-          <p><Link to="/kitchens">← Back to Kitchens</Link></p>
-        </section>
+          {images.length > 0 ? (
+            <Gallery images={images} initialCount={12} increment={12} />
+          ) : (
+            <p className="no-images-message">Gallery coming soon — check back for our latest Modern kitchen projects.</p>
+          )}
+        </div>
       </div>
     </main>
   );
