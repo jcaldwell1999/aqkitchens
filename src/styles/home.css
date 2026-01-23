@@ -2,6 +2,48 @@
    Styles for the Home page: hero buttons, feature cards, testimonials, and social icons.
 */
 
+/* Hero Centered Content Styles */
+.hero-centered-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-logo-glow {
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 60px rgba(255, 255, 255, 0.2));
+}
+
+.hero-title-centered {
+  font-size: 28px;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+}
+
+.hero-subtitle-centered {
+  font-size: 16px;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.5px;
+}
+
+@media (min-width: 768px) {
+  .hero-title-centered {
+    font-size: 36px;
+  }
+  .hero-subtitle-centered {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-title-centered {
+    font-size: 42px;
+  }
+  .hero-subtitle-centered {
+    font-size: 20px;
+  }
+}
+
 /* Hero Buttons */
 .home-btn-primary {
   background: #28343D;
@@ -60,6 +102,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.home-feature-card:hover {
+  transform: translateY(-5px);
 }
 
 .home-feature-icon {
@@ -69,6 +117,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .home-feature-icon img {
@@ -76,6 +125,15 @@
   height: 100%;
   object-fit: contain;
   filter: brightness(0) invert(1) opacity(0.85);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.home-feature-card:hover .home-feature-icon {
+  transform: scale(1.1);
+}
+
+.home-feature-card:hover .home-feature-icon img {
+  filter: brightness(0) invert(1) opacity(1) drop-shadow(0 0 12px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 24px rgba(160, 141, 106, 0.5));
 }
 
 .home-feature-card h4 {
@@ -83,6 +141,12 @@
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 12px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.home-feature-card:hover h4 {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 .home-feature-card p {
@@ -128,6 +192,7 @@
   padding: 10px;
   transition: color 0.2s ease, transform 0.2s ease;
   line-height: 1;
+  flex-shrink: 0;
 }
 
 .home-testimonial-nav:hover {
@@ -135,9 +200,88 @@
   transform: scale(1.1);
 }
 
+.home-testimonial-nav:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Fixed height wrapper to prevent layout shift */
+.home-testimonial-wrapper {
+  width: 100%;
+  max-width: 600px;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
 .home-testimonial-content {
   max-width: 600px;
   flex: 1;
+  padding: 20px 0;
+}
+
+/* Slide animations */
+.home-testimonial-content.slide-left {
+  animation: slideOutLeft 0.3s ease-out forwards;
+}
+
+.home-testimonial-content.slide-right {
+  animation: slideOutRight 0.3s ease-out forwards;
+}
+
+.home-testimonial-content.slide-in-right {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.home-testimonial-content.slide-in-left {
+  animation: slideInLeft 0.3s ease-out forwards;
+}
+
+@keyframes slideOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .home-testimonial-content h3 {
@@ -215,6 +359,10 @@
   
   .home-testimonial-carousel {
     gap: 15px;
+  }
+  
+  .home-testimonial-wrapper {
+    min-height: 260px;
   }
   
   .home-social-icons svg {

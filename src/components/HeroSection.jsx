@@ -1,6 +1,6 @@
 import logoImg from '../assets/images/LogoT.png';
 
-const HeroSection = ({ imageUrl, logoUrl = logoImg, title, subtitle, buttons, height = 'h-[95vh]', logoShift = '133px' }) => {
+const HeroSection = ({ imageUrl, logoUrl = logoImg, title, subtitle, buttons, height = 'h-[95vh]', logoShift = '133px', centerContent = false }) => {
   
   return (
     <section
@@ -27,24 +27,24 @@ const HeroSection = ({ imageUrl, logoUrl = logoImg, title, subtitle, buttons, he
             center with a negative translate. The inner `max-w-5xl` constrains text width so it matches
             your content layout while keeping the logo centered over the image. */}
         <div className="absolute inset-0 z-30">
-          <div className="absolute left-1/2 top-1/4 transform -translate-x-1/2 -translate-y-12 text-center px-6 max-w-5xl">
+          <div className={`absolute left-1/2 top-1/4 transform -translate-x-1/2 -translate-y-12 text-center px-6 max-w-5xl ${centerContent ? 'hero-centered-content' : ''}`}>
             {logoUrl && (
             <img
               src={logoUrl}
               alt="Logo"
-              className="hero-logo mx-auto mb-6 w-56 md:w-96 lg:w-[420px] drop-shadow-2xl"
-              style={{ transform: `translateX(${logoShift})` }}
+              className={`hero-logo mx-auto mb-6 w-56 md:w-96 lg:w-[420px] ${centerContent ? 'hero-logo-glow' : ''}`}
+              style={{ transform: centerContent ? 'none' : `translateX(${logoShift})` }}
             />
             )}
 
             {title && (
-              <h1 className="text-[36px] md:text-6xl lg:text-7xl font-bold text-white drop-shadow-2xl mb-4">
+              <h1 className={`font-bold text-white mb-4 ${centerContent ? 'hero-title-centered' : 'text-[36px] md:text-6xl lg:text-7xl drop-shadow-2xl'}`}>
                 {title}
               </h1>
             )}
 
             {subtitle && (
-              <p className="text-lg md:text-2xl text-white/90 drop-shadow-lg mb-6">
+              <p className={`text-white/90 mb-6 ${centerContent ? 'hero-subtitle-centered' : 'text-lg md:text-2xl drop-shadow-lg'}`}>
                 {subtitle}
               </p>
             )}
@@ -52,7 +52,7 @@ const HeroSection = ({ imageUrl, logoUrl = logoImg, title, subtitle, buttons, he
             {buttons && (
               /* Keep buttons centered on small screens but left-align with the
                  left edge of the text block on medium and larger screens. */
-              <div className="flex justify-center md:justify-start gap-4 w-full">
+              <div className={`flex gap-4 w-full ${centerContent ? 'justify-center' : 'justify-center md:justify-start'}`}>
                 {buttons}
               </div>
             )}

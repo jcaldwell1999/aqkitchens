@@ -27,13 +27,35 @@ const testimonials = [
 
 function Home() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [slideDirection, setSlideDirection] = useState('');
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    if (isAnimating) return;
+    setSlideDirection('slide-left');
+    setIsAnimating(true);
+    setTimeout(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+      setSlideDirection('slide-in-right');
+      setTimeout(() => {
+        setSlideDirection('');
+        setIsAnimating(false);
+      }, 300);
+    }, 300);
   };
 
   const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    if (isAnimating) return;
+    setSlideDirection('slide-right');
+    setIsAnimating(true);
+    setTimeout(() => {
+      setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+      setSlideDirection('slide-in-left');
+      setTimeout(() => {
+        setSlideDirection('');
+        setIsAnimating(false);
+      }, 300);
+    }, 300);
   };
 
   return (
@@ -42,9 +64,8 @@ function Home() {
       <HeroSection
         imageUrl={homeHeroImg}
         title={<>The Smarter Choice<br />for Your Kitchen Journey</>}
-        subtitle="Explore our kitchen range, available fully fitted or as supply."
         buttons={
-          <div className="flex gap-3 flex-wrap justify-center md:justify-start">
+          <div className="flex gap-3 flex-wrap justify-center">
             <Link to="/contact" className="home-btn-primary">
               CONTACT US <span className="ml-2">↗</span>
             </Link>
@@ -54,6 +75,7 @@ function Home() {
           </div>
         }
         height="h-[100vh]"
+        centerContent={true}
       />
 
       {/* Feature Cards Section */}
@@ -98,24 +120,28 @@ function Home() {
               className="home-testimonial-nav home-testimonial-prev" 
               onClick={prevTestimonial}
               aria-label="Previous testimonial"
+              disabled={isAnimating}
             >
               ‹
             </button>
             
-            <div className="home-testimonial-content">
-              <h3>{testimonials[currentTestimonial].title}</h3>
-              <p className="home-testimonial-text">
-                {testimonials[currentTestimonial].text}
-              </p>
-              <span className="home-testimonial-author">
-                {testimonials[currentTestimonial].author}
-              </span>
+            <div className="home-testimonial-wrapper">
+              <div className={`home-testimonial-content ${slideDirection}`}>
+                <h3>{testimonials[currentTestimonial].title}</h3>
+                <p className="home-testimonial-text">
+                  {testimonials[currentTestimonial].text}
+                </p>
+                <span className="home-testimonial-author">
+                  {testimonials[currentTestimonial].author}
+                </span>
+              </div>
             </div>
             
             <button 
               className="home-testimonial-nav home-testimonial-next" 
               onClick={nextTestimonial}
               aria-label="Next testimonial"
+              disabled={isAnimating}
             >
               ›
             </button>
