@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Gallery from '../components/Gallery';
 
 // Auto-import images from the shaker kitchens folder
-const modules = import.meta.glob('../assets/kitchens-shaker/*.{jpg,jpeg,png}', { eager: true, query: '?url', import: 'default' });
+const modules = import.meta.glob('../assets/kitchens-shaker/*.{jpg,jpeg,png,JPG,JPEG,PNG}', { eager: true, query: '?url', import: 'default' });
 
 // Turn the modules object into a sorted array of { src, title }
 const images = Object.entries(modules)

@@ -13,15 +13,16 @@ function About() {
         subtitle="The Smarter Choice For Your Kitchen Journey"
         height="h-[50vh]"
         centerContent={true}
+        showLogo={false}
       />
 
-      {/* Intro Content Box */}
+      {/* Intro Content Section */}
       <section className="about-intro-section">
-        <div className="content-box">
-          <p className="intro-text">
+        <div className="about-intro-content">
+          <p>
             AQ Kitchens is a family owned business who offer supply only or a complete service from design through to installation and everything in between including all trades. Our friendly and professional team ensure a smooth and professional installation for our high quality rigid built kitchens.
           </p>
-          <p className="intro-text">
+          <p>
             As a family run business we will design and guide you through your own renovation personally, ensuring our designs make the most of your space. Our one-on-one support, years of design and fitting experience, bespoke cabinetry and customisable options are why choosing AQ Kitchens as your independent retailer is the smarter move.
           </p>
         </div>

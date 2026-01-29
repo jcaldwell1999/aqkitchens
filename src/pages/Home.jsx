@@ -6,6 +6,9 @@ import iconChisel from '../assets/icons/craft-wood-chisel-cleaned.svg';
 import iconWardrobe from '../assets/icons/wardrobe-cleaned0.5.svg';
 import iconWasher from '../assets/icons/washing-machine-cleaned.svg';
 
+// Google Reviews URL - update this with your actual Google Business reviews link
+const GOOGLE_REVIEWS_URL = 'https://www.google.com/search?q=aqkitchens&oq=aqkitchens&gs_lcrp=EgRlZGdlKgYIABBFGDsyBggAEEUYOzIJCAEQABgNGIAEMgkIAhAAGA0YgAQyCAgDEAAYDRgeMggIBBAAGA0YHjIKCAUQABiABBiiBDIGCAYQRRg8MgYIBxBFGDwyBggIEEUYPNIBCDEzMjRqMGoxqAIAsAIA&sourceid=chrome&ie=UTF-8#lrd=0x4870f387b6d484a5:0x9c052dc3e9d311c,1,,,,';
+
 // Testimonials data
 const testimonials = [
   {
@@ -134,6 +137,14 @@ function Home() {
                 <span className="home-testimonial-author">
                   {testimonials[currentTestimonial].author}
                 </span>
+                <a 
+                  href={GOOGLE_REVIEWS_URL} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="home-testimonial-google-link"
+                >
+                  Read more reviews on Google →
+                </a>
               </div>
             </div>
             

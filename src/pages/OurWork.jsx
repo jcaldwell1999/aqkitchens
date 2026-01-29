@@ -2,7 +2,7 @@ import Gallery from '../components/Gallery';
 
 // Auto-import images from the `src/assets/our-work/` folder.
 // Drop images into that folder and they'll be included automatically.
-const modules = import.meta.glob('../assets/our-work/*.{jpg,jpeg,png}', { eager: true, as: 'url' });
+const modules = import.meta.glob('../assets/our-work/*.{jpg,jpeg,png}', { eager: true, query: '?url', import: 'default' });
 
 // Turn the modules object into a sorted array of { src, title }
 const images = Object.entries(modules)

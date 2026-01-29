@@ -1,5 +1,12 @@
 import { useState } from 'react';
 
+// ============================================
+// WEB3FORMS CONFIGURATION
+// Replace this with your actual Web3Forms access key
+// Get your key at: https://web3forms.com/
+// ============================================
+const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE';
+
 function Icon({ name }) {
   const size = 28;
   switch (name) {
@@ -25,29 +32,69 @@ function Icon({ name }) {
 }
 
 function Contact() {
-  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', message: '' });
+  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', message: '' });
+  const [status, setStatus] = useState({ type: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   function handleChange(e) {
     const { name, value } = e.target;
     setForm((s) => ({ ...s, [name]: value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    // placeholder behavior: show a quick confirmation (replace with real submit later)
-    alert('Thanks — message sent (demo).');
-    setForm({ firstName: '', lastName: '', email: '', message: '' });
+    setIsSubmitting(true);
+    setStatus({ type: '', message: '' });
+
+    // Check if access key is configured
+    if (WEB3FORMS_ACCESS_KEY === 'YOUR_ACCESS_KEY_HERE') {
+      setStatus({ 
+        type: 'success', 
+        message: 'Form submitted successfully! (Demo mode - configure Web3Forms access key for real submissions)' 
+      });
+      setForm({ firstName: '', lastName: '', email: '', phone: '', message: '' });
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: `${form.firstName} ${form.lastName}`.trim(),
+          email: form.email,
+          phone: form.phone,
+          message: form.message,
+          subject: `New Contact Form Submission from ${form.firstName || 'Website'}`,
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus({ type: 'success', message: 'Thank you! Your message has been sent successfully.' });
+        setForm({ firstName: '', lastName: '', email: '', phone: '', message: '' });
+      } else {
+        setStatus({ type: 'error', message: 'Something went wrong. Please try again.' });
+      }
+    } catch (error) {
+      setStatus({ type: 'error', message: 'Network error. Please check your connection and try again.' });
+    }
+
+    setIsSubmitting(false);
   }
 
   return (
-    <main>
+    <main className="contact-page">
       <div className="container">
         <section className="contact-hero">
           <h2>Contact Us</h2>
           <p className="contact-lead">Please feel free to get in contact if you have any questions, or interest and we'll get back to you as soon as possible.</p>
-          <div className="hero-actions">
-            <a href="#" className="btn-brochure">Brochure</a>
-          </div>
         </section>
 
         <section className="contact-section">
@@ -71,7 +118,7 @@ function Contact() {
                   <Icon name="phone" />
                   <div>
                     <h4>Phone</h4>
-                    <p>07782131359</p>
+                    <p><a href="tel:07782131359">07782 131 359</a></p>
                   </div>
                 </div>
 
@@ -79,15 +126,19 @@ function Contact() {
                   <Icon name="mail" />
                   <div>
                     <h4>Email</h4>
-                    <p>aqkitchens@outlook.com</p>
+                    <p><a href="mailto:aqkitchens@outlook.com">aqkitchens@outlook.com</a></p>
                   </div>
                 </div>
 
                 <div className="contact-info-item socials">
                   <Icon name="socials" />
                   <div>
-                    <h4>Socials</h4>
-                    <p className="social-icons">TikTok · Instagram · Facebook</p>
+                    <h4>Follow Us</h4>
+                    <div className="social-links">
+                      <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">TikTok</a>
+                      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+                      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -96,27 +147,75 @@ function Contact() {
             <div className="contact-right">
               <form className="contact-form" onSubmit={handleSubmit}>
                 <div className="form-row">
-                  <input name="firstName" value={form.firstName} onChange={handleChange} placeholder="First Name" />
-                  <input name="lastName" value={form.lastName} onChange={handleChange} placeholder="Last Name" />
+                  <input 
+                    name="firstName" 
+                    value={form.firstName} 
+                    onChange={handleChange} 
+                    placeholder="First Name" 
+                    required
+                  />
+                  <input 
+                    name="lastName" 
+                    value={form.lastName} 
+                    onChange={handleChange} 
+                    placeholder="Last Name" 
+                  />
                 </div>
 
                 <div className="form-row">
-                  <input name="email" value={form.email} onChange={handleChange} placeholder="Email *" required />
+                  <input 
+                    name="email" 
+                    type="email"
+                    value={form.email} 
+                    onChange={handleChange} 
+                    placeholder="Email *" 
+                    required 
+                  />
                 </div>
 
                 <div className="form-row">
-                  <textarea name="message" value={form.message} onChange={handleChange} placeholder="Message" rows={6} />
+                  <input 
+                    name="phone" 
+                    type="tel"
+                    value={form.phone} 
+                    onChange={handleChange} 
+                    placeholder="Phone Number" 
+                  />
                 </div>
 
                 <div className="form-row">
-                  <button type="submit" className="btn-send">Send</button>
+                  <textarea 
+                    name="message" 
+                    value={form.message} 
+                    onChange={handleChange} 
+                    placeholder="How can we help you?" 
+                    rows={6} 
+                    required
+                  />
+                </div>
+
+                {status.message && (
+                  <div className={`form-status ${status.type}`}>
+                    {status.message}
+                  </div>
+                )}
+
+                <div className="form-row">
+                  <button type="submit" className="btn-send" disabled={isSubmitting}>
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </button>
                 </div>
               </form>
             </div>
           </div>
 
           <div className="contact-map">
-            <iframe title="AQ Kitchens location" src="https://www.google.com/maps?q=Unit%206%20Easter%20Park%20Worcester%20Rd%20Kidderminster&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+            <iframe 
+              title="AQ Kitchens location" 
+              src="https://www.google.com/maps?q=Unit%206%20Easter%20Park%20Worcester%20Rd%20Kidderminster&output=embed" 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </section>
       </div>

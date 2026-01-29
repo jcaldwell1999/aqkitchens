@@ -8,3 +8,38 @@
 
 .content h3 { font-size: 2rem; margin-bottom:1rem; color:#2c3e50; }
 .content p:not(.intro-paragraph) { font-size:1.1rem; margin-bottom:1rem; line-height:1.8; }
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .content {
+    padding: 1.5rem 0;
+  }
+  
+  .intro-paragraph {
+    font-size: 0.95rem;
+    padding: 0 15px;
+  }
+  
+  .content h3 {
+    font-size: 1.6rem;
+  }
+  
+  .content p:not(.intro-paragraph) {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .content {
+    padding: 1rem 0;
+  }
+  
+  .intro-paragraph {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+  
+  .content h3 {
+    font-size: 1.4rem;
+  }
+}

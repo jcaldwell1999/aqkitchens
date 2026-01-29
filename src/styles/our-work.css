@@ -52,3 +52,18 @@
   .kitchen-gallery-hero h2 { font-size:32px; } 
   .kitchen-gallery-hero p { font-size:1rem; }
 }
+
+@media (max-width:500px) {
+  .our-work-container { padding: 24px 0 48px; }
+  .our-work-inner { padding: 16px 15px; }
+  .our-work-hero h2 { font-size: 26px; }
+  .our-work-hero p { font-size: 0.9rem; }
+  .gallery { column-gap: 14px; }
+  .gallery-item { margin-bottom: 14px; }
+  
+  .kitchen-gallery-container { padding: 24px 0 48px; }
+  .kitchen-gallery-inner { padding: 16px 15px; }
+  .kitchen-gallery-hero h2 { font-size: 26px; }
+  .kitchen-gallery-hero p { font-size: 0.9rem; }
+  .kitchen-gallery-hero .back-link { font-size: 0.85rem; }
+}

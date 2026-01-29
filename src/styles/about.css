@@ -6,7 +6,7 @@
   padding: 0;
 }
 
-/* Intro Section with Content Box */
+/* Intro Section - matching other pages */
 .about-intro-section {
   background: #28343D;
   padding: 60px 20px 40px;
@@ -14,27 +14,20 @@
   justify-content: center;
 }
 
-/* Main Content Box (outlined) */
-.content-box {
-  background-color: #F5F5F0;
-  padding: 48px 56px;
+.about-intro-content {
   max-width: 900px;
   width: 100%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  border: 2px solid #A08D6A;
-  border-radius: 4px;
-  box-sizing: border-box;
-} 
+  text-align: center;
+}
 
-.intro-text {
-  color: #28343D;
+.about-intro-content p {
+  color: #bfc8ca;
   font-size: 17px;
   line-height: 1.8;
   margin-bottom: 24px;
-  text-align: left;
 }
 
-.intro-text:last-child {
+.about-intro-content p:last-child {
   margin-bottom: 0;
 }
 
@@ -99,11 +92,7 @@
     padding: 40px 20px 30px;
   }
 
-  .content-box {
-    padding: 40px 30px;
-  }
-
-  .intro-text {
+  .about-intro-content p {
     font-size: 16px;
   }
 
@@ -140,11 +129,7 @@
     padding: 30px 16px 20px;
   }
 
-  .content-box {
-    padding: 30px 20px;
-  }
-
-  .intro-text {
+  .about-intro-content p {
     font-size: 15px;
   }
 

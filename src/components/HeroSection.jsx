@@ -1,6 +1,6 @@
 import logoImg from '../assets/images/LogoT.png';
 
-const HeroSection = ({ imageUrl, logoUrl = logoImg, title, subtitle, buttons, height = 'h-[95vh]', logoShift = '133px', centerContent = false }) => {
+const HeroSection = ({ imageUrl, logoUrl = logoImg, title, subtitle, buttons, height = 'h-[95vh]', logoShift = '133px', centerContent = false, showLogo = true, alignLeft = false }) => {
   
   return (
     <section
@@ -20,19 +20,14 @@ const HeroSection = ({ imageUrl, logoUrl = logoImg, title, subtitle, buttons, he
           Adjust `h-[35vh]` / `md:h-[30vh]` to increase/decrease how much of the image the gradient covers. */}
         <div className="absolute bottom-0 left-0 w-full h-[35vh] md:h-[30vh] bg-gradient-to-t from-[#28343D] to-transparent z-20" />
 
-      {/* Centered Content (positioned a bit higher so text has space below) */}
-      {/* Debugging lines removed — use the browser console to debug positioning */}
-        {/* Centered Content: center relative to the viewport so the logo visually matches the design.
-            We use an absolute, full-size flexbox to center horizontally and center slightly above vertical
-            center with a negative translate. The inner `max-w-5xl` constrains text width so it matches
-            your content layout while keeping the logo centered over the image. */}
-        <div className="absolute inset-0 z-30">
-          <div className={`absolute left-1/2 top-1/4 transform -translate-x-1/2 -translate-y-12 text-center px-6 max-w-5xl ${centerContent ? 'hero-centered-content' : ''}`}>
-            {logoUrl && (
+      {/* Content */}
+        <div className={`absolute inset-0 z-30 flex items-center ${alignLeft ? 'justify-start' : 'justify-center'}`}>
+          <div className={`px-6 max-w-5xl ${alignLeft ? 'text-left ml-[5%] md:ml-[10%] lg:ml-[15%]' : 'text-center'} ${centerContent ? 'hero-centered-content' : ''}`}>
+            {showLogo && logoUrl && (
             <img
               src={logoUrl}
               alt="Logo"
-              className={`hero-logo mx-auto mb-6 w-56 md:w-96 lg:w-[420px] ${centerContent ? 'hero-logo-glow' : ''}`}
+              className={`hero-logo mb-6 w-56 md:w-96 lg:w-[420px] ${centerContent ? 'hero-logo-glow mx-auto' : ''} ${alignLeft ? '' : 'mx-auto'}`}
               style={{ transform: centerContent ? 'none' : `translateX(${logoShift})` }}
             />
             )}
@@ -50,9 +45,7 @@ const HeroSection = ({ imageUrl, logoUrl = logoImg, title, subtitle, buttons, he
             )}
 
             {buttons && (
-              /* Keep buttons centered on small screens but left-align with the
-                 left edge of the text block on medium and larger screens. */
-              <div className={`flex gap-4 w-full ${centerContent ? 'justify-center' : 'justify-center md:justify-start'}`}>
+              <div className={`flex gap-4 ${alignLeft ? 'justify-start' : centerContent ? 'justify-center' : 'justify-center md:justify-start'}`}>
                 {buttons}
               </div>
             )}

@@ -6,7 +6,7 @@ import iconWardrobe from '../assets/icons/wardrobe-cleaned0.5.svg';
 import iconWasher from '../assets/icons/washing-machine-cleaned.svg';
 
 // Auto-import images from the utility/boot rooms folder
-const modules = import.meta.glob('../assets/utility-boot-rooms/*.{jpg,jpeg,png}', { eager: true, as: 'url' });
+const modules = import.meta.glob('../assets/utility-boot-rooms/*.{jpg,jpeg,png,JPG,JPEG,PNG}', { eager: true, query: '?url', import: 'default' });
 
 const images = Object.entries(modules)
   .sort((a, b) => a[0].localeCompare(b[0]))
@@ -31,8 +31,8 @@ function UtilityBootRooms() {
             </div>
           )}
           height="h-[100vh]"
-          logoShift="0px"
-          logoUrl={null}
+          showLogo={false}
+          alignLeft={true}
         />
       </div>
 
