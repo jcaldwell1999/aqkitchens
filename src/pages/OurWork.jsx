@@ -21,10 +21,10 @@ function OurWork() {
         <div className="our-work-inner container">
           <header className="our-work-hero">
             <h2>Our Work</h2>
-            <p>Selected projects — kitchens, cabinets & utility rooms.</p>
+            <p>A selection of kitchens we’ve had the pleasure of supplying and installing for our customers.</p>
           </header>
 
-          <Gallery images={images} initialCount={12} increment={12} />
+          <Gallery images={images.map(img => ({ src: img.src, tall: img.tall }))} initialCount={12} increment={12} />
         </div>
       </div>
     </main>

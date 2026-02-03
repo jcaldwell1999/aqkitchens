@@ -2,6 +2,7 @@ import HeroSection from '../components/HeroSection';
 import TeamPhoto from '../assets/images/aboutus/TeamPhoto.jpg';
 import WorkshopPhoto from '../assets/images/aboutus/WorkshopImage.jpg';
 import OwnersPhoto from '../assets/images/aboutus/couplestock.jpg';
+import logoImg from '../assets/images/LogoT.png';
 
 function About() {
   return (
@@ -28,34 +29,9 @@ function About() {
         </div>
       </section>
 
-      {/* Checkerboard Image/Caption Section */}
-      <section className="about-grid">
-        <div className="grid-row">
-          <div className="grid-text left">
-            <p>Our kitchens, utility rooms, and cabinets are hand crafted - designed and produced to suit each customer's unique needs</p>
-          </div>
-          <div className="grid-image right">
-            <img src={WorkshopPhoto} alt="Owner working in workshop" />
-          </div>
-        </div>
-
-        <div className="grid-row">
-          <div className="grid-image left">
-            <img src={OwnersPhoto} alt="Family business owners" />
-          </div>
-          <div className="grid-text right">
-            <p>A family ran business, who put their heart, soul, and personal touch into everything we do.</p>
-          </div>
-        </div>
-
-        <div className="grid-row">
-          <div className="grid-text left">
-            <p>A team of specialists who pour dedication and attention to each and every aspect of their work</p>
-          </div>
-          <div className="grid-image right">
-            <img src={TeamPhoto} alt="Team working together" />
-          </div>
-        </div>
+      {/* Logo and blurb only, per client request */}
+      <section className="about-logo-blurb" style={{ textAlign: 'center', marginTop: '40px' }}>
+        <img src={logoImg} alt="AQ Kitchens Logo" style={{ width: '220px', marginBottom: '24px' }} />
       </section>
     </main>
   );

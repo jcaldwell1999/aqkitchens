@@ -1,6 +1,6 @@
 import HeroSection from '../components/HeroSection';
 import Gallery from '../components/Gallery';
-import heroImg from '../assets/images/UtilityHero.jpg';
+import heroImg from '../assets/images/UtilitybootroomHero.jpg';
 import iconChisel from '../assets/icons/craft-wood-chisel-cleaned.svg';
 import iconWardrobe from '../assets/icons/wardrobe-cleaned0.5.svg';
 import iconWasher from '../assets/icons/washing-machine-cleaned.svg';

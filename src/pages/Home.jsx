@@ -84,13 +84,13 @@ function Home() {
       {/* Feature Cards Section */}
       <section className="home-features-section">
         <div className="home-features-container">
-          {/* Card 1 - Hand Crafted Quality */}
+          {/* Card 1 - Quality Cabinetry */}
           <div className="home-feature-card">
             <div className="home-feature-icon">
-              <img src={iconChisel} alt="Hand crafted quality" />
+              <img src={iconChisel} alt="Quality cabinetry" />
             </div>
-            <h4>Hand Crafted Quality</h4>
-            <p>Every kitchen is bespoke, built by hand for exceptional durability and design.</p>
+            <h4>Quality Cabinetry</h4>
+            <p>High quality rigid kitchens that install easily, made simple from design to installation.</p>
           </div>
 
           {/* Card 2 - Tailored Design */}

@@ -95,6 +95,9 @@ function Contact() {
         <section className="contact-hero">
           <h2>Contact Us</h2>
           <p className="contact-lead">Please feel free to get in contact if you have any questions, or interest and we'll get back to you as soon as possible.</p>
+          <p style={{ fontWeight: 'bold', marginTop: '18px', fontSize: '1.1em' }}>
+            Our showroom viewings are by appointment only
+          </p>
         </section>
 
         <section className="contact-section">
