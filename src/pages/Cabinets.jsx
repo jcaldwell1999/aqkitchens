@@ -1,4 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+
+// Auto-import cabinet images for the carousel
+const cabinetModules = import.meta.glob('../assets/cabinets/carousel/*.{jpg,jpeg,png,JPG,JPEG,PNG}', { eager: true, query: '?url', import: 'default' });
+const cabinetImages = Object.values(cabinetModules);
 
 // Cabinet colour/style options for the grid gallery
 const cabinetStyles = [
@@ -17,6 +22,17 @@ const cabinetStyles = [
 ];
 
 function Cabinets() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto-advance carousel every 5 seconds
+  useEffect(() => {
+    if (cabinetImages.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % cabinetImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <main className="bg-[#28343D]">
       {/* Hero Section */}
@@ -36,9 +52,42 @@ function Cabinets() {
           <p>
             At AQ Kitchens, we offer a wide selection of colours and finishes to complement 
             any interior style. From timeless neutrals to bold statement colours, each finish 
-            is available across our full range of handcrafted cabinetry.
+            is available across our full range of cabinetry.
+          </p>
+          <p className="cabinets-edge-text">
+            Our cabinets are edged in the same colour as the door, creating a seamless and 
+            co-ordinated look. This attention to detail ensures that your kitchen has a 
+            professional and polished finish, enhancing the overall design and aesthetic of the space.
           </p>
         </div>
+
+        {/* Cabinet Image Carousel - only show if images exist */}
+        {cabinetImages.length > 0 && (
+          <div className="cabinets-image-carousel">
+            <div className="cabinets-carousel-container">
+              {cabinetImages.map((img, index) => (
+                <div 
+                  key={index}
+                  className={`cabinets-carousel-slide ${index === currentSlide ? 'active' : ''}`}
+                >
+                  <img src={img} alt={`Cabinet example ${index + 1}`} />
+                </div>
+              ))}
+            </div>
+            {cabinetImages.length > 1 && (
+              <div className="cabinets-carousel-nav">
+                {cabinetImages.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`cabinets-carousel-dot ${index === currentSlide ? 'active' : ''}`}
+                    onClick={() => setCurrentSlide(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Colour Grid Gallery */}
         <div className="cabinets-gallery-section">

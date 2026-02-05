@@ -79,6 +79,7 @@ function Home() {
         }
         height="h-[100vh]"
         centerContent={true}
+        logoOffsetY="20px"
       />
 
       {/* Feature Cards Section */}

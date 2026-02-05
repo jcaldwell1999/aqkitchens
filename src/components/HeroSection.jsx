@@ -1,6 +1,6 @@
 import logoImg from '../assets/images/LogoT.png';
 
-const HeroSection = ({ imageUrl, logoUrl = logoImg, title, subtitle, buttons, height = 'h-[95vh]', logoShift = '133px', centerContent = false, showLogo = true, alignLeft = false }) => {
+const HeroSection = ({ imageUrl, logoUrl = logoImg, title, subtitle, buttons, height = 'h-[95vh]', logoShift = '133px', centerContent = false, showLogo = true, alignLeft = false, logoOffsetY = '0px' }) => {
   
   return (
     <section
@@ -28,7 +28,10 @@ const HeroSection = ({ imageUrl, logoUrl = logoImg, title, subtitle, buttons, he
               src={logoUrl}
               alt="Logo"
               className={`hero-logo mb-6 w-56 md:w-96 lg:w-[420px] ${centerContent ? 'hero-logo-glow mx-auto' : ''} ${alignLeft ? '' : 'mx-auto'}`}
-              style={{ transform: centerContent ? 'none' : `translateX(${logoShift})` }}
+              style={{ 
+                transform: centerContent ? `translateY(${logoOffsetY})` : `translateX(${logoShift})`,
+                marginTop: centerContent ? logoOffsetY : '0'
+              }}
             />
             )}
 

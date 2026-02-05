@@ -6,10 +6,31 @@
 /* small defaults for the utility page button sizing (page-local variables) */
 .utility-hero { --utility-btn-padding: 12px 26px; --utility-btn-font-size: 16px; --utility-btn-radius: 2px; }
 
-.utility-hero .hero-section h1 { font-size: 96px; line-height: 1.02; font-weight:800; text-align:left; display:block; max-width:680px; }
-.utility-hero .hero-section p { font-size:30px; color: rgba(255,255,255,0.92); max-width:680px; }
+.utility-hero .hero-section h1 { font-size: 72px; line-height: 1.1; font-weight:700; text-align:left; display:block; max-width:600px; }
+.utility-hero .hero-section p { font-size:22px; color: rgba(255,255,255,0.92); max-width:500px; }
 
-.utility-hero .hero-section .z-30 > div { left:25%; top:60%; transform: translateY(-50%); max-width:680px; padding:0 20px; text-align:left; }
+/* Position content lower and more centered-left */
+.utility-hero .hero-section .z-30 > div { 
+  position: absolute;
+  left: 8%;
+  top: 55%;
+  transform: translateY(-50%);
+  max-width: 600px;
+  padding: 0 20px;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .utility-hero .hero-section .z-30 > div {
+    left: 10%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .utility-hero .hero-section .z-30 > div {
+    left: 12%;
+  }
+}
 
 .hero-ctas { display:flex; gap:12px; justify-content:flex-start; align-items:flex-start; margin-top:28px; }
 .btn-primary { background:#28343D; color:#A08D6A; padding:var(--utility-btn-padding); border-radius:var(--utility-btn-radius); text-decoration:none; font-weight:800; display:inline-flex; align-items:center; font-size:var(--utility-btn-font-size); }
