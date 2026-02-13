@@ -1,7 +1,7 @@
 import HeroSection from '../components/HeroSection';
 import Gallery from '../components/Gallery';
 import heroImg from '../assets/images/UtilitybootroomHero.jpg';
-import iconChisel from '../assets/icons/craft-wood-chisel-cleaned.svg';
+import iconSpace from '../assets/icons/space-made-1.svg';
 import iconWardrobe from '../assets/icons/wardrobe-cleaned0.5.svg';
 import iconWasher from '../assets/icons/washing-machine-cleaned.svg';
 
@@ -70,10 +70,10 @@ function UtilityBootRooms() {
           {/* Card 3 - Space Efficient */}
           <div className="utility-feature-card">
             <div className="utility-feature-icon">
-              <img src={iconChisel} alt="Space efficient" />
+              <img src={iconSpace} alt="Space efficient" />
             </div>
             <h4>Space Efficient</h4>
-            <p>Smart layouts that maximise storage while saving floor space.</p>
+            <p>Creative, space-efficient layouts and built-ins tailored to your home.</p>
           </div>
         </div>
 

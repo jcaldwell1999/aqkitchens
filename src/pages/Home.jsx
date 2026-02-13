@@ -3,8 +3,8 @@ import { useState } from 'react';
 import HeroSection from '../components/HeroSection';
 import homeHeroImg from '../assets/images/HomeHero.jpg';
 import iconChisel from '../assets/icons/craft-wood-chisel-cleaned.svg';
-import iconWardrobe from '../assets/icons/wardrobe-cleaned0.5.svg';
-import iconWasher from '../assets/icons/washing-machine-cleaned.svg';
+import iconRuler from '../assets/icons/measuring-ruler-cleaned-1.svg';
+import iconWasher from '../assets/icons/house-repair-cleaned-1.svg';
 
 // Google Reviews URL - update this with your actual Google Business reviews link
 const GOOGLE_REVIEWS_URL = 'https://www.google.com/search?q=aqkitchens&oq=aqkitchens&gs_lcrp=EgRlZGdlKgYIABBFGDsyBggAEEUYOzIJCAEQABgNGIAEMgkIAhAAGA0YgAQyCAgDEAAYDRgeMggIBBAAGA0YHjIKCAUQABiABBiiBDIGCAYQRRg8MgYIBxBFGDwyBggIEEUYPNIBCDEzMjRqMGoxqAIAsAIA&sourceid=chrome&ie=UTF-8#lrd=0x4870f387b6d484a5:0x9c052dc3e9d311c,1,,,,';
@@ -18,14 +18,20 @@ const testimonials = [
   },
   {
     title: "Highly Recommend!",
-    text: "From start to finish, the team at AQ Kitchens were fantastic. Professional, punctual, and the quality of workmanship is outstanding. Our new kitchen has transformed our home.",
-    author: "Mark & Sarah"
+    text: "John, Tony, Liam and the rest of the team were fantastic throughout our kitchen fit. They went above and beyond to get it fitted quickly and professionally with any queries sorted out promptly. I love our new kitchen and have had many compliments over it, would recommend AQ kitchens to anyone, thanks again team!",
+    author: "Lucy"
   },
   {
     title: "Exceptional Service",
-    text: "We couldn't be happier with our utility room renovation. The attention to detail and craftsmanship exceeded our expectations. Thank you AQ Kitchens!",
-    author: "David"
+    text: "John and the team were fantastic from start to finish. From making us feel relaxed, to coming up with some fantastic ideas to delivering a beautiful kitchen. We’re absolutely delighted with the outcome. Highly recommended!",
+    author: "Neil"
+  },
+  {
+    title: "Fantastic Experience",
+    text: "Well, what can I say, having had a utility done with a howdens product and comparing it to the amazing product from John at AQ kitchens, the difference was night and day, he did it for half the price that I was quoted by Magnet too! Amazing friendly service and fantastic value for money, with solid wood painted doors and quartz too! I went for the Windsor shaker style in Fjord, with white Carrera quartz. Wow, just Wow. Thanks AQ Kitchens for helping us see what was possible with a modest budget.",
+    author: "Sean"
   }
+  
 ];
 
 function Home() {
@@ -97,7 +103,7 @@ function Home() {
           {/* Card 2 - Tailored Design */}
           <div className="home-feature-card">
             <div className="home-feature-icon">
-              <img src={iconWardrobe} alt="Tailored design" />
+              <img src={iconRuler} alt="Tailored design" />
             </div>
             <h4>Tailored Design</h4>
             <p>Designed around your space and lifestyle with expert planning and layout advice.</p>
