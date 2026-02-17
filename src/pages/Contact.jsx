@@ -138,9 +138,9 @@ function Contact() {
                   <div>
                     <h4>Follow Us</h4>
                     <div className="social-links">
-                      <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">TikTok</a>
-                      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-                      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                      <a href="https://www.tiktok.com/@aqkitchens" target="_blank" rel="noopener noreferrer">TikTok</a>
+                      <a href="https://www.instagram.com/aq_kitchens/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                      <a href="https://www.facebook.com/aqkitchens/" target="_blank" rel="noopener noreferrer">Facebook</a>
                     </div>
                   </div>
                 </div>

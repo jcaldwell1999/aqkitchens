@@ -1,3 +1,18 @@
+/* Hero CTA button hover animation for Utility & Boot Rooms */
+.utility-hero .btn-utility {
+  transition: 
+    background 0.3s cubic-bezier(0.4,0,0.2,1),
+    transform 0.2s cubic-bezier(0.4,0,0.2,1),
+    box-shadow 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+.utility-hero .btn-utility:hover, 
+.utility-hero .btn-utility:focus {
+  background: #1a2530; /* Slightly darker shade */
+  transform: scale(1.06) translateY(-2px);
+  box-shadow: 0 6px 24px 0 rgba(40,52,61,0.18);
+  color: #fff;
+}
 /* utility.css
    Page-specific styles for Utility & Boot Rooms. Keeps hero layout variants
    and feature row behavior separate from global hero styles.
@@ -6,8 +21,8 @@
 /* small defaults for the utility page button sizing (page-local variables) */
 .utility-hero { --utility-btn-padding: 12px 26px; --utility-btn-font-size: 16px; --utility-btn-radius: 2px; }
 
-.utility-hero .hero-section h1 { font-size: 72px; line-height: 1.1; font-weight:700; text-align:left; display:block; max-width:600px; }
-.utility-hero .hero-section p { font-size:22px; color: rgba(255,255,255,0.92); max-width:500px; }
+.utility-hero .hero-section h1 { font-size: 95px; line-height: 1.1; font-weight:700; text-align:left; display:block; max-width:600px; }
+.utility-hero .hero-section p { font-size:29px; color: rgba(255,255,255,0.92); max-width:600px; }
 
 /* Position content lower and more centered-left */
 .utility-hero .hero-section .z-30 > div { 
