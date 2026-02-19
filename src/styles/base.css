@@ -24,13 +24,13 @@ body {
 }
 
 /* Main area defaults */
-main {
+/*main {
   min-height: calc(100vh - 200px);
   padding: 2rem 0;
-}
+}*/
 
 /* Small utility helpers used in many components */
-.center { text-align: center; }
+/*.center { text-align: center; }*/
 
 /* Footer baseline styles */
 footer {

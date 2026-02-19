@@ -12,3 +12,12 @@
 @media (max-width: 600px) { .hero-section { margin-top: 0 !important; } }
 
 /* Utility page specific hero overrides are in utility.css */
+
+/* Main area defaults */
+main {
+  min-height: calc(100vh - 200px);
+  padding: 0;
+}
+
+/* Small utility helpers used in many components */
+.center { text-align: center; }

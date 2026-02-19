@@ -13,6 +13,7 @@
 @import "./styles/gallery.css";
 @import "./styles/cabinets.css";
 @import "./styles/misc.css";
+@import "./styles/footer.css";
 
 :root {
   --spacing: 0.25rem;
@@ -83,14 +84,6 @@ body {
   .nav-inner { padding: 10px 16px; }
   .nav-list { gap: 14px; }
   .nav-logo { height: 36px; }
-}
-
-.hero-section {
-  margin-top: -2rem !important;
-}
-
-@media (max-width: 600px) {
-  .hero-section { margin-top: 0 !important; }
 }
 
 /* Contact page styles */

@@ -1,0 +1,147 @@
+/* footer.css
+   Styles for the site footer with columns, social links, and bottom bar.
+*/
+
+.site-footer {
+  background: #1e2930;
+  color: #bfc8ca;
+  margin-top: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding: 60px 20px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-col h4 {
+  color: #e9ecee;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: 0.3px;
+}
+
+.footer-brand p {
+  color: #9aafb4;
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 300px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #9aafb4;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #A08D6A;
+}
+
+.footer-address {
+  font-style: normal;
+  color: #9aafb4;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.footer-contact-line {
+  margin-bottom: 6px;
+}
+
+.footer-contact-line a {
+  color: #9aafb4;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.footer-contact-line a:hover {
+  color: #A08D6A;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-socials a {
+  color: #9aafb4;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-flex;
+}
+
+.footer-socials a:hover {
+  color: #A08D6A;
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 20px 0;
+}
+
+.footer-bottom-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-bottom p {
+  color: #6b7f87;
+  font-size: 13px;
+  margin: 0;
+}
+
+.footer-credit a {
+  color: #6b7f87;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-credit a:hover {
+  color: #A08D6A;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 40px 20px 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 30px 20px 24px;
+  }
+
+  .footer-bottom-inner {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+}

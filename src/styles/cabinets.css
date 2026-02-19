@@ -10,7 +10,7 @@
   min-height: 350px;
   max-height: 450px;
   overflow: hidden;
-  margin-top: 60px; /* Push below fixed header */
+  margin-top: 0;
 }
 
 .cabinets-hero-carousel {
