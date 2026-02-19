@@ -1,0 +1,114 @@
+/* kitchens.css
+   Styles for the Kitchens overview page: style cards layout and supply-only section.
+*/
+
+.kitchens-page-content {
+  background: #28343D;
+  padding-bottom: 80px;
+}
+
+.kitchens-style-cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 2rem;
+}
+
+.kitchens-style-cards .style-card {
+  flex: 0 1 460px;
+  min-width: 280px;
+  height: 280px;
+}
+
+/* Supply Only Section */
+.kitchens-supply-section {
+  margin-top: 80px;
+  padding-top: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.kitchens-supply-inner {
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.kitchens-supply-inner h3 {
+  color: #e9ecee;
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.kitchens-supply-inner p {
+  color: #bfc8ca;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.kitchens-supply-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #A08D6A;
+  color: #ffffff;
+  padding: 14px 32px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.kitchens-supply-btn:hover {
+  background: #8a7a5c;
+  transform: translateY(-2px);
+}
+
+.kitchens-supply-btn span {
+  transition: transform 0.2s ease;
+}
+
+.kitchens-supply-btn:hover span {
+  transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .kitchens-style-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .kitchens-style-cards .style-card {
+    width: 100%;
+    max-width: 400px;
+    height: 220px;
+  }
+
+  .kitchens-supply-section {
+    margin-top: 60px;
+    padding-top: 40px;
+  }
+
+  .kitchens-supply-inner h3 {
+    font-size: 26px;
+  }
+
+  .kitchens-supply-inner p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .kitchens-style-cards .style-card {
+    height: 180px;
+  }
+
+  .kitchens-supply-inner h3 {
+    font-size: 22px;
+  }
+}
