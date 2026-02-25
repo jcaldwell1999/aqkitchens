@@ -11,7 +11,7 @@
   background: transparent; 
   color: white; 
   box-shadow: none; 
-  z-index: 60; 
+  z-index: 100; 
   transition: background-color 220ms ease, box-shadow 220ms ease, backdrop-filter 220ms ease; 
 }
 
@@ -40,7 +40,7 @@
 .logo-link { 
   display:inline-flex; 
   align-items:center; 
-  z-index: 70;
+  z-index: 110;
 }
 
 .nav-logo { 
@@ -96,7 +96,7 @@
   border: none;
   cursor: pointer;
   padding: 8px;
-  z-index: 70;
+  z-index: 110;
 }
 
 /* Hamburger icon */
@@ -171,6 +171,8 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 65;
+    padding-top: 60px;
   }
   
   .nav-menu.open {

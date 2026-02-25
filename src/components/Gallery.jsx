@@ -45,6 +45,9 @@ export default function Gallery({ images = [], initialCount = 12, increment = 12
     setLightboxIndex((prev) => (prev + 1) % visible.length);
   };
 
+  // Strip titles for lightbox so no captions are shown
+  const lightboxImages = visible.map(img => ({ src: img.src }));
+
   return (
     <div>
       <div className="gallery" aria-live="polite">
@@ -54,9 +57,9 @@ export default function Gallery({ images = [], initialCount = 12, increment = 12
             type="button"
             onClick={() => openLightbox(i)}
             className={`gallery-item ${img.tall ? 'tall' : ''} ${animatingItems.has(i) ? 'gallery-item-enter' : ''}`} 
-            aria-label={img.title || `View image ${i + 1}`}
+            aria-label={`View image ${i + 1}`}
           >
-            <img src={img.src} alt={img.title || `Image ${i + 1}`} loading="lazy" />
+            <img src={img.src} alt={`Image ${i + 1}`} loading="lazy" />
           </button>
         ))}
       </div>
@@ -71,7 +74,7 @@ export default function Gallery({ images = [], initialCount = 12, increment = 12
 
       {lightboxIndex !== null && (
         <Lightbox
-          images={visible}
+          images={lightboxImages}
           currentIndex={lightboxIndex}
           onClose={closeLightbox}
           onPrev={goToPrev}
