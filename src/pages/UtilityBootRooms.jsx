@@ -30,7 +30,7 @@ function UtilityBootRooms() {
               <a href="/our-work" className="btn-primary btn-utility">VIEW OUR WORK</a>
             </div>
           )}
-          height="h-[100vh]"
+          height="h-[105vh]"
           showLogo={false}
           alignLeft={true}
         />

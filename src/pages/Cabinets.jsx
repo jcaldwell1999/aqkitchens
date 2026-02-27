@@ -1,126 +1,224 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import logoImg from '../assets/images/LogoT.png';
 
-// Auto-import cabinet images for the carousel
-const cabinetModules = import.meta.glob('../assets/cabinets/carousel/*.{jpg,jpeg,png,JPG,JPEG,PNG}', { eager: true, query: '?url', import: 'default' });
-const cabinetImages = Object.values(cabinetModules);
-
-// Cabinet colour/style options for the grid gallery
+// Cabinet style definitions - add/edit styles here
+// Images should be placed in: assets/cabinets/[folder]/[color].jpg
 const cabinetStyles = [
-  { name: "Shaker White", color: "#F5F5F0" },
-  { name: "Dove Grey", color: "#9CA3A8" },
-  { name: "Sage Green", color: "#8A9A7B" },
-  { name: "Navy Blue", color: "#2C3E50" },
-  { name: "Charcoal", color: "#3A3A3A" },
-  { name: "Cream", color: "#F5E6D3" },
-  { name: "Dusty Pink", color: "#D4A5A5" },
-  { name: "Forest Green", color: "#2D5A3D" },
-  { name: "Slate Blue", color: "#6B8BA4" },
-  { name: "Natural Oak", color: "#C4A35A" },
-  { name: "Walnut", color: "#5D4037" },
-  { name: "Black Matt", color: "#1A1A1A" },
+  {
+    id: 'mornington-shaker',
+    name: 'Mornington Shaker',
+    folder: 'mornington-shaker',
+    featuredColor: 'Porcelain',
+    colors: ['Porcelain', 'Dove Grey', 'Graphite', 'Sage', 'Navy']
+  },
+  {
+    id: 'clarendon',
+    name: 'Clarendon',
+    folder: 'clarendon',
+    featuredColor: 'Stone',
+    colors: ['Stone', 'Dust Grey', 'Hartforth Blue', 'Porcelain']
+  },
+  {
+    id: 'hunton',
+    name: 'Hunton',
+    folder: 'hunton',
+    featuredColor: 'Porcelain',
+    colors: ['Porcelain', 'Regiment', 'Graphite', 'Sage Green']
+  }
 ];
 
-function Cabinets() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+// Dynamic import of all cabinet images
+const allCabinetImages = import.meta.glob(
+  '../assets/cabinets/**/*.{jpg,jpeg,png,JPG,JPEG,PNG}',
+  { eager: true, query: '?url', import: 'default' }
+);
 
-  // Auto-advance carousel every 5 seconds
-  useEffect(() => {
-    if (cabinetImages.length <= 1) return;
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % cabinetImages.length);
-    }, 5000);
-    return () => clearInterval(timer);
+// Helper to get image path for a style and color
+const getImagePath = (folder, color) => {
+  const colorSlug = color.toLowerCase().replace(/\s+/g, '-');
+  const possiblePaths = [
+    `../assets/cabinets/${folder}/${colorSlug}.jpg`,
+    `../assets/cabinets/${folder}/${colorSlug}.jpeg`,
+    `../assets/cabinets/${folder}/${colorSlug}.png`,
+    `../assets/cabinets/${folder}/${colorSlug}.JPG`,
+    `../assets/cabinets/${folder}/${colorSlug}.JPEG`,
+    `../assets/cabinets/${folder}/${colorSlug}.PNG`,
+  ];
+  
+  for (const path of possiblePaths) {
+    if (allCabinetImages[path]) {
+      return allCabinetImages[path];
+    }
+  }
+  return null;
+};
+
+// Get all images for a style folder
+const getStyleImages = (folder) => {
+  const images = [];
+  for (const [path, src] of Object.entries(allCabinetImages)) {
+    if (path.includes(`/${folder}/`)) {
+      // Extract color name from filename
+      const filename = path.split('/').pop();
+      const colorName = filename
+        .replace(/\.(jpg|jpeg|png)$/i, '')
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+      images.push({ src, color: colorName });
+    }
+  }
+  return images;
+};
+
+function Cabinets() {
+  const [selectedStyle, setSelectedStyle] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = (style) => {
+    setSelectedStyle(style);
+    setModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = useCallback(() => {
+    setModalOpen(false);
+    setSelectedStyle(null);
+    document.body.style.overflow = '';
   }, []);
 
-  return (
-    <main className="bg-[#28343D]">
-      {/* Hero Section */}
-      <div className="cabinets-hero">
-        <div className="cabinets-hero-overlay" />
-        <div className="cabinets-hero-content">
-          <h1>Cabinet Colours & Finishes</h1>
-          <p>Explore our range of premium colours and finishes for your bespoke cabinetry</p>
-        </div>
-      </div>
+  // Close modal on escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && modalOpen) {
+        closeModal();
+      }
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [modalOpen, closeModal]);
 
-      {/* Main Content Section */}
-      <section className="cabinets-content-section">
-        {/* Intro text */}
+  // Get images for modal
+  const modalImages = selectedStyle ? getStyleImages(selectedStyle.folder) : [];
+
+  return (
+    <main className="cabinets-page">
+      {/* Header Section */}
+      <div className="cabinets-header">
+        <img src={logoImg} alt="AQ Kitchens Logo" className="cabinets-logo" />
+        
         <div className="cabinets-intro">
-          <h2>Find Your Perfect Finish</h2>
+          <h1>Cabinet Colours & Finishes</h1>
           <p>
             At AQ Kitchens, we offer a wide selection of colours and finishes to complement 
             any interior style. From timeless neutrals to bold statement colours, each finish 
             is available across our full range of cabinetry.
           </p>
-          <p className="cabinets-edge-text">
+          <p>
             Our cabinets are edged in the same colour as the door, creating a seamless and 
             co-ordinated look. This attention to detail ensures that your kitchen has a 
-            professional and polished finish, enhancing the overall design and aesthetic of the space.
+            professional and polished finish.
           </p>
         </div>
+      </div>
 
-        {/* Cabinet Image Carousel - only show if images exist */}
-        {cabinetImages.length > 0 && (
-          <div className="cabinets-image-carousel">
-            <div className="cabinets-carousel-container">
-              {cabinetImages.map((img, index) => (
-                <div 
-                  key={index}
-                  className={`cabinets-carousel-slide ${index === currentSlide ? 'active' : ''}`}
-                >
-                  <img src={img} alt={`Cabinet example ${index + 1}`} />
+      {/* Popular Cabinet Styles - 3 Card Layout */}
+      <section className="cabinets-styles-section">
+        <h2>Popular Cabinet Styles</h2>
+        
+        <div className="cabinets-styles-grid">
+          {cabinetStyles.map((style) => {
+            const featuredImage = getImagePath(style.folder, style.featuredColor);
+            const styleImages = getStyleImages(style.folder);
+            const hasImages = styleImages.length > 0;
+            
+            return (
+              <button
+                key={style.id}
+                className="cabinet-style-card"
+                onClick={() => hasImages && openModal(style)}
+                disabled={!hasImages}
+                aria-label={`View ${style.name} colour options`}
+              >
+                <div className="cabinet-style-image">
+                  {featuredImage ? (
+                    <img src={featuredImage} alt={`${style.name} in ${style.featuredColor}`} />
+                  ) : (
+                    <div className="cabinet-style-placeholder">
+                      <span>Image coming soon</span>
+                    </div>
+                  )}
+                </div>
+                
+                <div className="cabinet-style-info">
+                  <h3>{style.name}</h3>
+                  <p className="cabinet-style-colors">
+                    {style.colors.join(' • ')}
+                  </p>
+                  <span className="cabinet-style-link">
+                    View full colour range <span>›</span>
+                  </span>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Brochure & CTA Section */}
+      <div className="cabinets-cta">
+        <p>View our complete range of colours and finishes in the brochure.</p>
+        <a 
+          href="/TheKitchenBook.pdf"
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="cabinets-brochure-btn"
+        >
+          Download Brochure <span>›</span>
+        </a>
+        <p className="cabinets-cta-subtext">
+          Can't find the colour you're looking for? We offer custom colour matching.
+        </p>
+        <Link to="/contact" className="cabinets-contact-btn">
+          Get in Touch <span>→</span>
+        </Link>
+      </div>
+
+      {/* Colour Options Modal */}
+      {modalOpen && selectedStyle && (
+        <div className="cabinet-modal-overlay" onClick={closeModal}>
+          <div className="cabinet-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="cabinet-modal-close" onClick={closeModal} aria-label="Close modal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
+            </button>
+            
+            <div className="cabinet-modal-header">
+              <h2>{selectedStyle.name}</h2>
+              <p>Available in {modalImages.length} colour{modalImages.length !== 1 ? 's' : ''}</p>
+            </div>
+            
+            <div className="cabinet-modal-grid">
+              {modalImages.map((img, index) => (
+                <div key={index} className="cabinet-modal-item">
+                  <div className="cabinet-modal-image">
+                    <img src={img.src} alt={`${selectedStyle.name} in ${img.color}`} />
+                  </div>
+                  <span className="cabinet-modal-color">{img.color}</span>
                 </div>
               ))}
             </div>
-            {cabinetImages.length > 1 && (
-              <div className="cabinets-carousel-nav">
-                {cabinetImages.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`cabinets-carousel-dot ${index === currentSlide ? 'active' : ''}`}
-                    onClick={() => setCurrentSlide(index)}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Colour Grid Gallery */}
-        <div className="cabinets-gallery-section">
-          <h2>Our Colour Range</h2>
-          <p className="cabinets-gallery-subtitle">
-            Click any colour to enquire or see examples
-          </p>
-
-          <div className="cabinets-color-grid">
-            {cabinetStyles.map((style, index) => (
-              <Link 
-                key={index}
-                to="/contact"
-                className="cabinet-color-card"
-              >
-                <div 
-                  className="cabinet-color-swatch"
-                  style={{ backgroundColor: style.color }}
-                />
-                <span className="cabinet-color-name">{style.name}</span>
+            
+            <div className="cabinet-modal-footer">
+              <Link to="/contact" className="cabinet-modal-enquire" onClick={closeModal}>
+                Enquire About This Style <span>→</span>
               </Link>
-            ))}
+            </div>
           </div>
         </div>
-
-        {/* Call to Action */}
-        <div className="cabinets-cta">
-          <p>Can't find the colour you're looking for? We offer custom colour matching.</p>
-          <Link to="/contact" className="cabinets-cta-btn">
-            Get in Touch <span>→</span>
-          </Link>
-        </div>
-      </section>
+      )}
     </main>
   );
 }

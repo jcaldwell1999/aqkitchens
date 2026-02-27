@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import HeroSection from '../components/HeroSection';
-import homeHeroImg from '../assets/images/HomeHero.jpg';
+import homeHeroImg from '../assets/images/KitchensHero2.jpg';
 import shakerImg from '../assets/images/ShakerButton.jpg';
 import modernImg from '../assets/images/ModernButton.jpg';
 
@@ -11,6 +11,9 @@ function Kitchens() {
       <HeroSection
         imageUrl={homeHeroImg}
         subtitle="Explore our kitchen range, available fully fitted or as supply."
+        height="h-[100vh]"
+        centerContent={true}
+        logoOffsetY="0px"
       />
 
       <div className="kitchens-page-content">

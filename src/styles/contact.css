@@ -89,17 +89,25 @@
 .social-links {
   display: flex;
   gap: 16px;
+  align-items: center;
 }
 
 .social-links a {
   color: #bfc8ca;
   text-decoration: none;
   font-size: 14px;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-flex;
 }
 
 .social-links a:hover {
   color: #A08D6A;
+  transform: translateY(-2px);
+}
+
+.social-links svg {
+  width: 22px;
+  height: 22px;
 }
 
 .contact-right { 

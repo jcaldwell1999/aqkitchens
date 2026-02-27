@@ -2,7 +2,7 @@ import logoImg from '../assets/images/LogoT.png';
 
 function About() {
   return (
-    <main className="about-page" style={{ minHeight: '100vh', background: '#28343D', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: '60px' }}>
+    <main className="about-page" style={{ minHeight: '100vh', background: '#28343D', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: '100px' }}>
       <img src={logoImg} alt="AQ Kitchens Logo" style={{ width: '320px', maxWidth: '90vw', marginBottom: '40px', display: 'block' }} />
       <div className="about-intro-content" style={{ maxWidth: '700px', color: '#e9ecee', fontSize: '1.18rem', textAlign: 'center', lineHeight: 1.7 }}>
         <p>

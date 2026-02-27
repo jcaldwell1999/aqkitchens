@@ -144,14 +144,6 @@ function Home() {
                 <span className="home-testimonial-author">
                   {testimonials[currentTestimonial].author}
                 </span>
-                <a 
-                  href={GOOGLE_REVIEWS_URL} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="home-testimonial-google-link"
-                >
-                  Read more reviews on Google →
-                </a>
               </div>
             </div>
             
@@ -164,6 +156,15 @@ function Home() {
               ›
             </button>
           </div>
+          
+          <a 
+            href={GOOGLE_REVIEWS_URL} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="home-testimonial-google-link"
+          >
+            Read more reviews on Google →
+          </a>
         </div>
       </section>
 

@@ -1,7 +1,23 @@
+import { useState, useEffect } from 'react';
 import logoImg from '../assets/images/LogoT.png';
 
 const HeroSection = ({ imageUrl, logoUrl = logoImg, title, subtitle, buttons, height = 'h-[95vh]', logoShift = '133px', centerContent = false, showLogo = true, alignLeft = false, logoOffsetY = '0px' }) => {
-  
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // On mobile, don't apply horizontal shift - keep logo centered
+  const logoTransform = centerContent
+    ? `translateY(${logoOffsetY})`
+    : isMobile
+      ? 'translateX(0)'
+      : `translateX(${logoShift})`;
+
   return (
     <section
       className={`hero-section relative w-full ${height} overflow-hidden`}
@@ -29,7 +45,7 @@ const HeroSection = ({ imageUrl, logoUrl = logoImg, title, subtitle, buttons, he
               alt="Logo"
               className={`hero-logo mb-6 w-56 md:w-96 lg:w-[420px] ${centerContent ? 'hero-logo-glow mx-auto' : ''} ${alignLeft ? '' : 'mx-auto'}`}
               style={{ 
-                transform: centerContent ? `translateY(${logoOffsetY})` : `translateX(${logoShift})`,
+                transform: logoTransform,
                 marginTop: centerContent ? logoOffsetY : '0'
               }}
             />
