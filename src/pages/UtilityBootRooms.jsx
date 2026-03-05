@@ -1,7 +1,7 @@
 import HeroSection from '../components/HeroSection';
 import Gallery from '../components/Gallery';
 import heroImg from '../assets/images/UtilitybootroomHero.jpg';
-import iconSpace from '../assets/icons/space-made-1.svg';
+import iconSpace from '../assets/icons/space-made-2.svg';
 import iconWardrobe from '../assets/icons/wardrobe-cleaned0.5.svg';
 import iconWasher from '../assets/icons/washing-machine-cleaned.svg';
 
