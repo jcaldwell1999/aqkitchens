@@ -217,6 +217,7 @@ function Cabinets() {
         <p>View our complete range of colours and finishes in the brochure.</p>
         <a 
           href="/TheKitchenBook.pdf"
+          download="AQ-Kitchens-Brochure.pdf"
           target="_blank" 
           rel="noopener noreferrer" 
           className="cabinets-brochure-btn"
