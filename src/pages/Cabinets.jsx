@@ -169,7 +169,7 @@ function Cabinets() {
 
       {/* Popular Cabinet Styles - 3 Card Layout */}
       <section className="cabinets-styles-section">
-        <h2>Popular Cabinet Styles</h2>
+        <h2>Popular Cabinet Door Styles</h2>
         
         <div className="cabinets-styles-grid">
           {cabinetStyles.map((style) => {
