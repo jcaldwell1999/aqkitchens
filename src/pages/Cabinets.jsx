@@ -6,25 +6,59 @@ import logoImg from '../assets/images/LogoT.png';
 // Images should be placed in: assets/cabinets/[folder]/[color].jpg
 const cabinetStyles = [
   {
-    id: 'mornington-shaker',
-    name: 'Mornington Shaker',
-    folder: 'mornington-shaker',
+    id: 'mornington-beaded',
+    name: 'Mornington Beaded',
+    folder: 'mornington-beaded',
     featuredColor: 'Porcelain',
-    colors: ['Porcelain', 'Dove Grey', 'Graphite', 'Sage', 'Navy']
+    colors: [
+      'Porcelain',
+      'Dove Grey',
+      'Taupe Grey',
+      'Stone',
+      'Partridge Grey',
+      'Regiment',
+      'Dust Grey',
+      'Hartforth Blue',
+      'Graphite',
+      'Carbon'
+    ]
   },
   {
-    id: 'clarendon',
-    name: 'Clarendon',
-    folder: 'clarendon',
-    featuredColor: 'Stone',
-    colors: ['Stone', 'Dust Grey', 'Hartforth Blue', 'Porcelain']
-  },
-  {
-    id: 'hunton',
-    name: 'Hunton',
-    folder: 'hunton',
+    id: 'crathorne',
+    name: 'Crathorne',
+    folder: 'crathorne',
     featuredColor: 'Porcelain',
-    colors: ['Porcelain', 'Regiment', 'Graphite', 'Sage Green']
+    colors: [
+      'Porcelain',
+      'Dove Grey',
+      'Taupe Grey',
+      'Stone',
+      'Partridge Grey',
+      'Regiment',
+      'Dust Grey',
+      'Harforth Blue',
+      'Graphite',
+      'Carbon'
+    ]
+  }
+  ,
+  {
+    id: 'mornington-vale',
+    name: 'Mornington Vale',
+    folder: 'mornington-vale',
+    featuredColor: 'Porcelain',
+    colors: [
+      'Porcelain',
+      'Dove Grey',
+      'Taupe Grey',
+      'Stone',
+      'Partridge Grey',
+      'Regiment',
+      'Dust Grey',
+      'Hartforth Blue',
+      'Graphite',
+      'Carbon'
+    ]
   }
 ];
 
@@ -55,20 +89,30 @@ const getImagePath = (folder, color) => {
 };
 
 // Get all images for a style folder
-const getStyleImages = (folder) => {
+const getStyleImages = (folder, featuredColor = 'Porcelain') => {
+  // Only include .jpg, .jpeg, .png files (ignore .af, etc)
   const images = [];
   for (const [path, src] of Object.entries(allCabinetImages)) {
     if (path.includes(`/${folder}/`)) {
-      // Extract color name from filename
       const filename = path.split('/').pop();
+      // Remove extension, normalize to match color names
       const colorName = filename
         .replace(/\.(jpg|jpeg|png)$/i, '')
-        .split('-')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
+        .replace(/([a-z])([A-Z])/g, '$1 $2') // camelCase to space
+        .replace(/-/g, ' ')
+        .replace(/_/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .replace(/^\w/, c => c.toUpperCase());
       images.push({ src, color: colorName });
     }
   }
+  // Sort so featuredColor (e.g. Porcelain) is first
+  images.sort((a, b) => {
+    if (a.color.toLowerCase() === featuredColor.toLowerCase()) return -1;
+    if (b.color.toLowerCase() === featuredColor.toLowerCase()) return 1;
+    return a.color.localeCompare(b.color);
+  });
   return images;
 };
 
@@ -100,7 +144,7 @@ function Cabinets() {
   }, [modalOpen, closeModal]);
 
   // Get images for modal
-  const modalImages = selectedStyle ? getStyleImages(selectedStyle.folder) : [];
+  const modalImages = selectedStyle ? getStyleImages(selectedStyle.folder, selectedStyle.featuredColor) : [];
 
   return (
     <main className="cabinets-page">
@@ -129,10 +173,12 @@ function Cabinets() {
         
         <div className="cabinets-styles-grid">
           {cabinetStyles.map((style) => {
-            const featuredImage = getImagePath(style.folder, style.featuredColor);
-            const styleImages = getStyleImages(style.folder);
+            // Always get all images for the style, and featured image for the card
+            const styleImages = getStyleImages(style.folder, style.featuredColor);
             const hasImages = styleImages.length > 0;
-            
+            const featuredImageObj = styleImages.find(img => img.color.toLowerCase() === style.featuredColor.toLowerCase());
+            const featuredImage = featuredImageObj ? featuredImageObj.src : null;
+
             return (
               <button
                 key={style.id}
@@ -150,7 +196,7 @@ function Cabinets() {
                     </div>
                   )}
                 </div>
-                
+
                 <div className="cabinet-style-info">
                   <h3>{style.name}</h3>
                   <p className="cabinet-style-colors">
