@@ -210,7 +210,7 @@
 .home-testimonial-wrapper {
   width: 100%;
   max-width: 600px;
-  height: 280px;
+  height: 320px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -388,7 +388,7 @@
   }
   
   .home-testimonial-wrapper {
-    height: 340px;
+    height: 380px;
   }
   
   .home-social-icons svg {
@@ -434,7 +434,9 @@
   }
   
   .home-testimonial-wrapper {
-    height: 380px;
+    height: auto;
+    min-height: 280px;
+    overflow: visible;
   }
   
   .home-testimonial-card {

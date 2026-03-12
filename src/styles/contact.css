@@ -258,8 +258,10 @@
     height: 300px;
   }
   
-  .social-links {
-    flex-direction: column;
-    gap: 8px;
+  /* Keep social icons horizontal only for Follow Us section on mobile */
+  .contact-info-item.socials .social-links {
+    flex-direction: row;
+    gap: 16px;
   }
+  /* If there are other .social-links elsewhere, they can still stack if needed */
 }

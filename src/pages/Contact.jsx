@@ -5,7 +5,7 @@ import { useState } from 'react';
 // Replace this with your actual Web3Forms access key
 // Get your key at: https://web3forms.com/
 // ============================================
-const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE';
+const WEB3FORMS_ACCESS_KEY = 'f5a16c10-34b4-41ad-8a3b-864b6c18b326';
 
 function Icon({ name }) {
   const size = 28;
@@ -47,7 +47,7 @@ function Contact() {
     setStatus({ type: '', message: '' });
 
     // Check if access key is configured
-    if (WEB3FORMS_ACCESS_KEY === 'YOUR_ACCESS_KEY_HERE') {
+    if (WEB3FORMS_ACCESS_KEY === 'f5a16c10-34b4-41ad-8a3b-864b6c18b326') {
       setStatus({ 
         type: 'success', 
         message: 'Form submitted successfully! (Demo mode - configure Web3Forms access key for real submissions)' 
