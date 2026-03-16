@@ -46,17 +46,6 @@ function Contact() {
     setIsSubmitting(true);
     setStatus({ type: '', message: '' });
 
-    // Check if access key is configured
-    if (WEB3FORMS_ACCESS_KEY === 'f5a16c10-34b4-41ad-8a3b-864b6c18b326') {
-      setStatus({ 
-        type: 'success', 
-        message: 'Form submitted successfully! (Demo mode - configure Web3Forms access key for real submissions)' 
-      });
-      setForm({ firstName: '', lastName: '', email: '', phone: '', message: '' });
-      setIsSubmitting(false);
-      return;
-    }
-
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
