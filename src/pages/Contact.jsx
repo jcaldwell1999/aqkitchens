@@ -5,7 +5,7 @@ import { useState } from 'react';
 // Replace this with your actual Web3Forms access key
 // Get your key at: https://web3forms.com/
 // ============================================
-const WEB3FORMS_ACCESS_KEY = 'f5a16c10-34b4-41ad-8a3b-864b6c18b326';
+const WEB3FORMS_ACCESS_KEY = '1d8bd4e5-1898-4ee5-a01b-9b58fad883af';
 
 function Icon({ name }) {
   const size = 28;
@@ -118,7 +118,7 @@ function Contact() {
                   <Icon name="mail" />
                   <div>
                     <h4>Email</h4>
-                    <p><a href="mailto:aqkitchens@outlook.com">aqkitchens@outlook.com</a></p>
+                    <p><a href="mailto:sales@aqkitchens.co.uk">sales@aqkitchens.co.uk</a></p>
                   </div>
                 </div>
 
